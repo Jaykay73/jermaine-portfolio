@@ -1,6 +1,5 @@
 import {
   FaPython,
-  FaReact,
   FaDocker,
   FaGithub,
   FaGitAlt,
@@ -12,19 +11,14 @@ import {
   SiTensorflow,
   SiPytorch,
   SiFlask,
-  SiTailwindcss,
   SiFastapi,
   SiPandas,
-
   SiScikitlearn,
   SiPostgresql,
   SiJupyter,
   SiGooglecloud,
-  SiJavascript,
   SiArduino,
   SiCplusplusbuilder,
-  SiDart,
-  SiFlutter,
   SiHuggingface,
   SiOpencv,
   SiKeras,
@@ -37,14 +31,9 @@ const tools = [
   // Languages
   { name: "Python", icon: FaPython },
   { name: "C++", icon: SiCplusplusbuilder },
-  { name: "JavaScript", icon: SiJavascript },
-  { name: "Dart", icon: SiDart },
 
   // Web & Mobile
-  { name: "React", icon: FaReact },
-  { name: "Tailwind CSS", icon: SiTailwindcss },
   { name: "FastAPI", icon: SiFastapi },
-  { name: "Flutter", icon: SiFlutter },
 
   // ML & AI
   { name: "Hugging Face", icon: SiHuggingface },

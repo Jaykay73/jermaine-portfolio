@@ -8,6 +8,8 @@ import {
   ContactMain,
   ExperienceMain,
   BlogMain,
+  FeaturedMain,
+
 } from "./components";
 import Footer from "./components/layout/Footer";
 import ParticleBackground from "./components/ParticleBackground";
@@ -28,12 +30,15 @@ function App() {
       <div className="relative flex flex-col overflow-x-hidden z-0">
         <ParticleBackground />
         <NavMain />
-        <main className="relative z-10 flex-grow flex flex-col justify-center items-center">
+        <main className="relative z-10 flex-grow flex flex-col items-center">
           <section id="home">
             <HeroMain />
           </section>
           <section id="about">
             <AboutMain />
+          </section>
+          <section id="featured">
+            <FeaturedMain />
           </section>
           <section id="experience">
             <ExperienceMain />

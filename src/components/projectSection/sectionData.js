@@ -16,7 +16,30 @@ import bankChurnImg from "../../assets/projects/bank-churn/churn-dashboard.png";
 // Credit Card Fraud
 import creditCardFraudImg from "../../assets/projects/credit-card-fraud/fraud-detection.png";
 
+// AI Resume Optimizer
+import resumeOptimizerImg from "../../assets/projects/resume-optimizer/resume-dashboard.png";
+
 const projects = [
+  {
+    id: 5,
+    name: "AI Resume Optimizer",
+    category: "AI | Career Tech",
+    description:
+      "Automated career coach that analyzes skill gaps between resumes and JDs with 95% parsing accuracy. Leverages Gemini 2.0 Flash to generate tailored cover letters and portfolio ideas based on missing skills. Features ONNX quantization for performance and a modern Next.js UI.",
+    stack: [
+      { name: "Next.js" },
+      { name: "FastAPI" },
+      { name: "Python" },
+      { name: "Google Gemini" },
+      { name: "Docker" },
+    ],
+    links: {
+      live: "https://aicareerarchitect.vercel.app",
+      github: "https://github.com/Jaykay73/resume-optimizer",
+    },
+    image: resumeOptimizerImg,
+    docImages: [resumeOptimizerImg],
+  },
   {
     id: 0,
     name: "Brain Tumor MRI Classifier",
