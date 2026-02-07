@@ -4,10 +4,30 @@ import resumeOptimizerImg from "../../assets/projects/resume-optimizer/resume-da
 import cineMatchImg from "../../assets/projects/cinematch/cinematch.png";
 import mriScanImg from "../../assets/projects/brain-tumor/mri-scan.png";
 import legalDocImg from "../../assets/projects/legal-doc/legal-doc.png";
+import nextwordImg from "../../assets/projects/pidgin-predictor/nextword.jpg";
 import { FaGithub, FaExternalLinkAlt, FaMicrochip, FaBrain, FaDatabase, FaServer } from "react-icons/fa";
 
 const FeaturedMain = () => {
     const featuredProjects = [
+        {
+            id: 0,
+            title: "Nigerian Pidgin Next-Word Predictor",
+            category: "NLP & Dual-Model Architecture",
+            subtitle: "Real-time Text Prediction & Cultural Preservation",
+            description:
+                "A decoupled microservices system offering real-time next-word suggestions for Nigerian Pidgin. It combines a deep learning LSTM model for context awareness with a statistical Trigram model for speed and efficiency.",
+            techDeepDive:
+                "The backend uses **FastAPI** to serve both PyTorch LSTM and statistical models. **Docker** ensures consistent deployment on Hugging Face Spaces. The frontend, built with **Streamlit** and custom components, captures keystrokes in real-time, debouncing requests to balance latency and server load.",
+            techStack: ["PyTorch", "FastAPI", "Streamlit", "Docker", "Hugging Face"],
+            image: nextwordImg,
+            links: {
+                live: "https://nextword-pidgin.streamlit.app/",
+                github: "https://github.com/Jaykay73/nextword-pidgin",
+            },
+            color: "text-amber-400",
+            borderColor: "border-amber-400/30",
+            shadow: "shadow-amber-400/20",
+        },
         {
             id: 1,
             title: "AI Resume Optimizer",

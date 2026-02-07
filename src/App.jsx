@@ -37,13 +37,13 @@ function App() {
           <section id="about">
             <AboutMain />
           </section>
-          <section id="featured">
+          <section id="projects">
             <FeaturedMain />
           </section>
           <section id="experience">
             <ExperienceMain />
           </section>
-          <section id="projects">
+          <section id="more-projects">
             <ProjectMain />
           </section>
           <section id="blog">
