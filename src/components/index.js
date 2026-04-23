@@ -6,6 +6,7 @@ import ContactMain from "./contactSection/ContactMain";
 import ExperienceMain from "./experienceSection/ExperienceMain";
 import BlogMain from "./blogSection/BlogMain";
 import FeaturedMain from "./featuredSection/FeaturedMain";
+import PlaygroundMain from "./playground/PlaygroundSection";
 
 export {
   NavMain,
@@ -16,4 +17,5 @@ export {
   ExperienceMain,
   BlogMain,
   FeaturedMain,
+  PlaygroundMain,
 };

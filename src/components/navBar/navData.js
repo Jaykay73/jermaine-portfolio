@@ -3,7 +3,7 @@ import { RiTwitterXFill } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa";
 import { MdOutgoingMail } from "react-icons/md";
 
-export const navList = ["Home", "About", "Experience", "Projects", "Blog", "Contact"];
+export const navList = ["Home", "About", "Projects", "Playground", "Experience", "Blog", "Contact"];
 export const socialLinks = [
   {
     icon: TbBrandLinkedinFilled,
