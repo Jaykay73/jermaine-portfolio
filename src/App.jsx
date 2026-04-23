@@ -9,10 +9,11 @@ import {
   ExperienceMain,
   BlogMain,
   FeaturedMain,
-
+  PlaygroundMain,
 } from "./components";
 import Footer from "./components/layout/Footer";
 import ParticleBackground from "./components/ParticleBackground";
+import ChatWidget from "./components/chatbot/ChatWidget";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -40,6 +41,9 @@ function App() {
           <section id="projects">
             <FeaturedMain />
           </section>
+          <section id="playground">
+            <PlaygroundMain />
+          </section>
           <section id="experience">
             <ExperienceMain />
           </section>
@@ -54,6 +58,7 @@ function App() {
           </div>
           <Footer />
         </main>
+        <ChatWidget />
         <Analytics />
       </div>
     </>
