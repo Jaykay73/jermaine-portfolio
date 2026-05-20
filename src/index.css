@@ -30,6 +30,10 @@
 }
 
 @layer base {
+  :root {
+    --accent-rgb: 255, 215, 0;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -70,6 +74,15 @@
     }
   }
 
+  @keyframes loading-bar {
+    0% {
+      left: -40%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
   .animate-marquee {
     animation: marquee 25s linear infinite;
   }
@@ -80,5 +93,9 @@
 
   .animate-blink {
     animation: blink 1s step-start infinite;
+  }
+
+  .animate-loading-bar {
+    animation: loading-bar 1.5s infinite linear;
   }
 }
