@@ -17,7 +17,7 @@ const REQUEST_TIMEOUT = 20000;
  * @param {string} message — The user's message
  * @returns {Promise<string>} — The assistant's reply
  */
-export async function sendMessage(message) {
+export async function sendMessage(message, mode = "default") {
   const trimmed = (message || "").trim();
 
   if (!trimmed) {
@@ -35,7 +35,7 @@ export async function sendMessage(message) {
     const response = await fetch(CHAT_API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: trimmed }),
+      body: JSON.stringify({ message: trimmed, mode }),
       signal: controller.signal,
     });
 
@@ -49,7 +49,10 @@ export async function sendMessage(message) {
     }
 
     const data = await response.json();
-    return data.reply || "I couldn't generate a response.";
+    return {
+      reply: data.reply || "I couldn't generate a response.",
+      sources: data.sources || [],
+    };
   } catch (err) {
     clearTimeout(timeoutId);
 
@@ -62,16 +65,8 @@ export async function sendMessage(message) {
 }
 
 /**
- * Future: Retrieve relevant context from knowledge base before LLM call.
- * This is a placeholder for RAG integration.
- *
- * @param {string} query — The user's question
- * @returns {Promise<string[]>} — Relevant context chunks
+ * Note: RAG Pipeline is implemented securely on the server-side.
+ * Performing vector similarity search in api/chat.js (production) and
+ * plugins/chatApiPlugin.js (development) protects sensitive credentials
+ * (Pinecone & NVIDIA API keys) from client-side exposure.
  */
-export async function retrieveContext(query) {
-  // TODO: Implement vector similarity search against portfolio-kb
-  // 1. Embed the query using a sentence transformer
-  // 2. Search against pre-computed embeddings of portfolio-kb entries
-  // 3. Return top-k relevant chunks
-  return [];
-}
