@@ -42,6 +42,7 @@ const comingSoonModels = [
 ];
 
 const PlaygroundSection = () => {
+  const [activeModel, setActiveModel] = useState("pidgin");
   return (
     <div className="pt-20 pb-16 container mx-auto px-6 relative z-10" id="playground">
       {/* Section Header */}
@@ -62,6 +63,43 @@ const PlaygroundSection = () => {
           Don't just read about my models — test them live. Type a phrase and watch the predictions flow in real time.
         </p>
       </motion.div>
+
+      {/* Tab Switcher */}
+      <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10 bg-secondary/20 backdrop-blur-sm border border-white/5 p-2 rounded-2xl max-w-3xl mx-auto">
+        <button
+          onClick={() => setActiveModel("pidgin")}
+          className={`flex items-center gap-2 px-5 py-3 rounded-xl text-xs md:text-sm font-bold cursor-pointer transition-all ${
+            activeModel === "pidgin"
+              ? "bg-accent text-background shadow-lg shadow-accent/25"
+              : "text-gray-400 hover:text-white hover:bg-white/5"
+          }`}
+        >
+          <FaRocket />
+          <span>Pidgin Predictor</span>
+        </button>
+        <button
+          onClick={() => setActiveModel("bitcheck")}
+          className={`flex items-center gap-2 px-5 py-3 rounded-xl text-xs md:text-sm font-bold cursor-pointer transition-all ${
+            activeModel === "bitcheck"
+              ? "bg-teal-400 text-background shadow-lg shadow-teal-400/25"
+              : "text-gray-400 hover:text-white hover:bg-white/5"
+          }`}
+        >
+          <FaShieldAlt />
+          <span>BitCheck Authenticator</span>
+        </button>
+        <button
+          onClick={() => setActiveModel("lockedin")}
+          className={`flex items-center gap-2 px-5 py-3 rounded-xl text-xs md:text-sm font-bold cursor-pointer transition-all ${
+            activeModel === "lockedin"
+              ? "bg-indigo-400 text-background shadow-lg shadow-indigo-400/25"
+              : "text-gray-400 hover:text-white hover:bg-white/5"
+          }`}
+        >
+          <FaRoad />
+          <span>LockedIn Roadmaps</span>
+        </button>
+      </div>
 
       {/* Active Model — Pidgin Predictor */}
       <div className="mb-16">
