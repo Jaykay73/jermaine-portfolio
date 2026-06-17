@@ -6,6 +6,7 @@ import mriScanImg from "../../assets/projects/brain-tumor/mri-scan.png";
 import legalDocImg from "../../assets/projects/legal-doc/legal-doc.png";
 import nextwordImg from "../../assets/projects/pidgin-predictor/nextword.jpg";
 import bitcheckImg from "../../assets/projects/bitcheck/bitcheck.png";
+import diabeticRetinopathyImg from "../../assets/projects/diabetes/diabetic-retinopathy.png";
 import { FaGithub, FaExternalLinkAlt, FaMicrochip, FaBrain, FaDatabase, FaServer } from "react-icons/fa";
 
 const FeaturedMain = () => {
@@ -28,6 +29,25 @@ const FeaturedMain = () => {
             color: "text-teal-400",
             borderColor: "border-teal-400/30",
             shadow: "shadow-teal-400/20",
+        },
+        {
+            id: 1,
+            title: "Diabetic Retinopathy Classifier",
+            category: "Deep Learning | Medical AI",
+            subtitle: "Early Diagnostics & Model Explainability",
+            description:
+                "An advanced computer vision application that detects and classifies Diabetic Retinopathy from retina scans, providing medical professionals with accurate diagnostic assistance and interpretable visual breakdowns.",
+            techDeepDive:
+                "Utilizes **Transfer Learning** with a fine-tuned **EfficientNet-B0** model built in **PyTorch**. To ensure transparency in medical decisions, the system integrates **Grad-CAM (Gradient-weighted Class Activation Mapping)** to project heatmaps onto the retina scans, highlight abnormal regions (such as microaneurysms or hemorrhages) that influenced the classification, and assist clinical review. The app is deployed on **Streamlit Cloud**.",
+            techStack: ["PyTorch", "EfficientNet-B0", "Grad-CAM", "Streamlit", "Python"],
+            image: diabeticRetinopathyImg,
+            links: {
+                live: "https://diabetic-retinopathy-m.streamlit.app/",
+                github: "https://github.com/Jaykay73/Diabetes",
+            },
+            color: "text-pink-400",
+            borderColor: "border-pink-400/30",
+            shadow: "shadow-pink-400/20",
         },
         {
             id: 4,
