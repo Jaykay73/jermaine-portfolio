@@ -19,6 +19,10 @@ import creditCardFraudImg from "../../assets/projects/credit-card-fraud/fraud-de
 // AI Resume Optimizer
 import resumeOptimizerImg from "../../assets/projects/resume-optimizer/resume-dashboard.png";
 
+// New Projects
+import bitcheckImg from "../../assets/projects/bitcheck/bitcheck.png";
+import diabeticRetinopathyImg from "../../assets/projects/diabetes/diabetic-retinopathy.png";
+
 const projects = [
   {
     id: 5,
@@ -45,7 +49,7 @@ const projects = [
     name: "Brain Tumor MRI Classifier",
     category: "Deep Learning",
     description:
-      "End-to-end deep learning project classifying brain tumor types (Glioma, Meningioma, Pituitary, No Tumor) from MRI scans using Transfer Learning (EfficientNetB0). Deployed as an interactive Streamlit web app.",
+      "End-to-end deep learning project classifying brain tumor types (Glioma, Meningioma, Pituitary, No Tumor) from MRI scans using Transfer Learning (EfficientNetB0). The model was quantized and deployed on a seamless mobile application for edge inference, and is also available as an interactive Streamlit app.",
     stack: [
       { name: "Python" },
       { name: "TensorFlow" },
@@ -139,6 +143,45 @@ const projects = [
     },
     image: creditCardFraudImg,
     docImages: [creditCardFraudImg],
+  },
+  {
+    id: 6,
+    name: "BitCheck",
+    category: "AI | Computer Vision | Cybersecurity",
+    description:
+      "A multi-signal image verification API that analyzes uploads for manipulation and AI-generation. Combines metadata extraction, C2PA Content Credentials, visible watermark checking (via OCR and template matching), image forensics (sharpness, compression, noise anomalies), a PyTorch EfficientNet classifier trained on 140,000 images (70,000 real and 70,000 AI-generated), and Grad-CAM explainability into a dynamic risk-based JSON report.",
+    stack: [
+      { name: "FastAPI" },
+      { name: "PyTorch" },
+      { name: "OpenCV" },
+      { name: "Tesseract OCR" },
+      { name: "Docker" },
+    ],
+    links: {
+      live: "https://bitcheckapp.vercel.app/",
+      github: "https://github.com/Jaykay73/bitcheck",
+    },
+    image: bitcheckImg,
+    docImages: [bitcheckImg],
+  },
+  {
+    id: 7,
+    name: "Diabetic Retinopathy Classifier",
+    category: "Deep Learning | Medical AI",
+    description:
+      "A deep learning web application that classifies and detects Diabetic Retinopathy from retina scans using an EfficientNet-B0 PyTorch model trained on medical images. Deployed as an interactive Streamlit demo. Includes Grad-CAM explainability for model interpretability.",
+    stack: [
+      { name: "PyTorch" },
+      { name: "Streamlit" },
+      { name: "Python" },
+      { name: "EfficientNetB0" },
+    ],
+    links: {
+      live: "https://diabetic-retinopathy-m.streamlit.app/",
+      github: "https://github.com/Jaykay73/Diabetes",
+    },
+    image: diabeticRetinopathyImg,
+    docImages: [diabeticRetinopathyImg],
   },
 ];
 
