@@ -103,7 +103,8 @@ Technologies used: RAG Pipeline, SentenceTransformers, PyPDF, Streamlit.
     text: `
 John built a deep learning classifier for brain tumor types (Glioma, Meningioma, Pituitary) from MRI scans.
 It uses transfer learning with EfficientNetB0, custom data augmentation for medical images, and provides real-time inference with confidence scores via an interactive web app.
-Technologies used: TensorFlow, EfficientNet, Transfer Learning, Streamlit.
+The model was optimized via quantization and successfully deployed on a seamless mobile application for efficient edge inference.
+Technologies used: TensorFlow, EfficientNet, Transfer Learning, Streamlit, Mobile App, Quantization.
 `,
     metadata: {
       liveUrl: "https://mri-scan.streamlit.app/",
@@ -189,6 +190,66 @@ A beginner-friendly explanation by John detailing how neural networks update wei
       platform: "Medium",
       date: "2025-10-27",
       tags: ["neural networks", "deep learning", "blog", "beginner"],
+    },
+  },
+  {
+    id: "project-bitcheck",
+    type: "project",
+    title: "BitCheck Image Verification API",
+    text: `
+John built BitCheck, a multi-signal image verification API that checks uploaded images for manipulation and AI-generation.
+It integrates EXIF/XMP/PNG metadata checks, C2PA Content Credentials via c2patool, visible watermark detection (using pytesseract OCR and OpenCV template matching), and lightweight forensics (noise, sharpness, compression anomalies).
+It features a custom PyTorch EfficientNet classifier trained on 140,000 images (70,000 real and 70,000 AI-generated) and exposes Grad-CAM explainability maps.
+The service is built as a FastAPI backend, containerized with Docker, and deployed on a Hugging Face Space (https://huggingface.co/spaces/Jaykay73/Bitcheck-image).
+`,
+    metadata: {
+      liveUrl: "https://bitcheckapp.vercel.app/",
+      githubUrl: "https://github.com/Jaykay73/bitcheck",
+      tags: ["image verification", "fastapi", "pytorch", "efficientnet", "c2pa", "opencv", "ocr", "grad-cam", "cybersecurity"],
+    },
+  },
+  {
+    id: "project-diabetic-retinopathy",
+    type: "project",
+    title: "Diabetic Retinopathy Classifier",
+    text: `
+John built a Diabetic Retinopathy Classifier Streamlit application that detects and classifies diabetic retinopathy from retina scans.
+It uses an EfficientNet-B0 deep learning model implemented in PyTorch and trained on medical images.
+It features Grad-CAM explainability for model interpretability, showing the high-influence regions of the retina scan.
+The project is deployed as an interactive demo on Streamlit Cloud.
+`,
+    metadata: {
+      liveUrl: "https://diabetic-retinopathy-m.streamlit.app/",
+      githubUrl: "https://github.com/Jaykay73/Diabetes",
+      tags: ["medical ai", "deep learning", "pytorch", "efficientnet", "streamlit", "grad-cam", "diabetic retinopathy"],
+    },
+  },
+  {
+    id: "project-lockedin",
+    type: "project",
+    title: "LockedIn AI Service",
+    text: `
+John created LockedIn, a standalone FastAPI AI service designed to generate beginner-friendly learning roadmaps for any skill or topic you want to learn (not just tech skills).
+It integrates Tavily and YouTube APIs to discover and rank resource candidates, applies custom filtering logic to filter out duplicates, paywalls, or broken links, uses DeepSeek LLM for roadmap generation, validates the structure using Pydantic v2, caches roadmaps in SQLite, and is deployed on a Hugging Face Space (https://huggingface.co/spaces/Jaykay73/LockedIn).
+`,
+    metadata: {
+      liveUrl: "https://lockedin4l.vercel.app/",
+      githubUrl: "https://github.com/Jaykay73/LockedIn",
+      tags: ["fastapi", "deepseek", "roadmap generator", "tavily", "sqlite", "pydantic", "ai agent"],
+    },
+  },
+  {
+    id: "project-flappy-bird-rl",
+    type: "project",
+    title: "Flappy Bird Reinforcement Learning",
+    text: `
+John developed Flappy Bird RL, a reinforcement learning project exploring policy search and control algorithms to train agents to play Flappy Bird.
+He built and compared multiple approaches: tabular Q-learning with custom discrete state mappings/reward shaping, Proximal Policy Optimization (PPO) using deep neural networks, neuroevolution of augmenting topologies (NEAT), and Genetic Algorithms (GA) to analyze learning curves, stability, and sample efficiency.
+`,
+    metadata: {
+      liveUrl: "#",
+      githubUrl: "https://github.com/Jaykay73/flappy-bird",
+      tags: ["reinforcement learning", "q-learning", "ppo", "neat", "genetic algorithms", "pytorch", "gymnasium", "numpy"],
     },
   },
 ];
