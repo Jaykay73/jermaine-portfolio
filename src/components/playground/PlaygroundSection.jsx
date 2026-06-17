@@ -1,8 +1,10 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaRocket, FaFileMedical, FaFilm, FaGavel, FaCreditCard, FaChartLine } from "react-icons/fa";
 import NextWordDemo from "./NextWordDemo";
 import ComingSoonModelCard from "./ComingSoonModelCard";
+import BitCheckDemo from "./BitCheckDemo";
+import LockedInDemo from "./LockedInDemo";
 
 const comingSoonModels = [
   {
