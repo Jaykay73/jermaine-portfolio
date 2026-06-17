@@ -101,25 +101,72 @@ const PlaygroundSection = () => {
         </button>
       </div>
 
-      {/* Active Model — Pidgin Predictor */}
-      <div className="mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-3 mb-6"
-        >
-          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-green-400 text-xs font-bold tracking-wider uppercase">
-            Live Model
-          </span>
-          <span className="text-white text-sm font-semibold">
-            — Nigerian Pidgin Next-Word Predictor
-          </span>
-        </motion.div>
+      {/* Active Model Content */}
+      <div className="mb-16 min-h-[400px]">
+        <AnimatePresence mode="wait">
+          {activeModel === "pidgin" && (
+            <motion.div
+              key="pidgin"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-green-400 text-xs font-bold tracking-wider uppercase">
+                  Live Model
+                </span>
+                <span className="text-white text-sm font-semibold font-mono">
+                  — Nigerian Pidgin Next-Word Predictor
+                </span>
+              </div>
+              <NextWordDemo />
+            </motion.div>
+          )}
 
-        <NextWordDemo />
+          {activeModel === "bitcheck" && (
+            <motion.div
+              key="bitcheck"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+                <span className="text-teal-400 text-xs font-bold tracking-wider uppercase">
+                  Live Model
+                </span>
+                <span className="text-white text-sm font-semibold font-mono">
+                  — BitCheck Image Authenticator (EfficientNet-B0 + Forensics)
+                </span>
+              </div>
+              <BitCheckDemo />
+            </motion.div>
+          )}
+
+          {activeModel === "lockedin" && (
+            <motion.div
+              key="lockedin"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+                <span className="text-indigo-400 text-xs font-bold tracking-wider uppercase">
+                  Live Service
+                </span>
+                <span className="text-white text-sm font-semibold font-mono">
+                  — LockedIn AI Roadmap Generator (DeepSeek + Tavily RAG)
+                </span>
+              </div>
+              <LockedInDemo />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Coming Soon Models */}
