@@ -25,11 +25,12 @@ const AboutMain = () => {
             viewport={{ once: true, amount: 0.1 }}
           >
             <p className="text-sm xl:text-lg text-primary/80 leading-relaxed">
-              I’m a Machine Learning Engineer and Data Scientist who builds production-ready AI systems, not just models.
-              I specialize in Python, machine learning, computer vision, NLP, and data analytics, with experience taking ideas from raw data to deployed solutions.
-              I focus on scalable, practical AI, enjoy solving hard problems, and consistently ship real-world projects that deliver measurable value.
+              I am a Machine Learning Engineer and Data Scientist whose journey into AI was sparked by a deep fascination with problem-solving algorithms.
+              For me, every step in my learning path and career has been driven by a desire to tackle one concrete problem after another.
+              I don't just build models; I design and deploy production-ready AI systems that solve real-world challenges.
+              Specializing in Python, computer vision, NLP, and data analytics, I focus on building scalable, practical solutions that turn complex data into measurable value.
               <br /> <br />
-              When I'm not actively building projects, I'm writing my blog with the aim of explaining complex AI topics as simply as possible.
+              When I'm not actively building projects, I write articles on my blog to demystify complex AI topics, explaining them as simply as possible to help others solve their own engineering hurdles.
             </p>
           </motion.div>
           <motion.div
