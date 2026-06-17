@@ -5,12 +5,32 @@ import cineMatchImg from "../../assets/projects/cinematch/cinematch.png";
 import mriScanImg from "../../assets/projects/brain-tumor/mri-scan.png";
 import legalDocImg from "../../assets/projects/legal-doc/legal-doc.png";
 import nextwordImg from "../../assets/projects/pidgin-predictor/nextword.jpg";
+import bitcheckImg from "../../assets/projects/bitcheck/bitcheck.png";
 import { FaGithub, FaExternalLinkAlt, FaMicrochip, FaBrain, FaDatabase, FaServer } from "react-icons/fa";
 
 const FeaturedMain = () => {
     const featuredProjects = [
         {
             id: 0,
+            title: "BitCheck",
+            category: "AI | Computer Vision | Cybersecurity",
+            subtitle: "Multi-Signal Image Verification & Forensic Analysis",
+            description:
+                "A sophisticated image verification API designed to identify manipulated and AI-generated media. By aggregating deep learning predictions with traditional forensic filters, C2PA validation, and OCR template matches, it generates comprehensive, risk-weighted reports.",
+            techDeepDive:
+                "The core pipeline orchestrates multiple verification layers in parallel. It uses **FastAPI** to handle requests asynchronously. Metadata is extracted using **ExifTool / PyPDF**, while Content Credentials are parsed with the **c2patool**. Text/watermarks are identified using **pytesseract OCR** and **OpenCV template matching**. A custom **PyTorch EfficientNet-B0** model (trained on 140,000 images, half real and half AI) generates predictions, combined with CPU-optimized forensic checks (sharpness, noise, and compression anomalies). **Grad-CAM** generates visual heatmaps highlighting high-influence regions for model interpretability.",
+            techStack: ["FastAPI", "PyTorch", "OpenCV", "Tesseract OCR", "Grad-CAM", "Docker"],
+            image: bitcheckImg,
+            links: {
+                live: "https://bitcheckapp.vercel.app/",
+                github: "https://github.com/Jaykay73/bitcheck",
+            },
+            color: "text-teal-400",
+            borderColor: "border-teal-400/30",
+            shadow: "shadow-teal-400/20",
+        },
+        {
+            id: 4,
             title: "Nigerian Pidgin Next-Word Predictor",
             category: "NLP & Dual-Model Architecture",
             subtitle: "Real-time Text Prediction & Cultural Preservation",
@@ -29,7 +49,7 @@ const FeaturedMain = () => {
             shadow: "shadow-amber-400/20",
         },
         {
-            id: 1,
+            id: 5,
             title: "AI Resume Optimizer",
             category: "AI Career Coach",
             subtitle: "Job Matching & tailored Cover letters",
@@ -48,7 +68,7 @@ const FeaturedMain = () => {
             shadow: "shadow-cyan-400/20",
         },
         {
-            id: 2,
+            id: 6,
             title: "CineMatch API",
             category: "Recommendation Engine",
             subtitle: "Semantic Search & Vector Embeddings",
@@ -67,7 +87,7 @@ const FeaturedMain = () => {
             shadow: "shadow-purple-400/20",
         },
         {
-            id: 3,
+            id: 7,
             title: "Legal Document Analyzer",
             category: "NLP & RAG System",
             subtitle: "Automated Contract Analysis",
@@ -86,7 +106,7 @@ const FeaturedMain = () => {
             shadow: "shadow-emerald-400/20",
         },
         {
-            id: 4,
+            id: 8,
             title: "Brain Tumor MRI Classifier",
             category: "Medical AI Diagnostics",
             subtitle: "Computer Vision & Deep Learning",
