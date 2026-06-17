@@ -29,7 +29,7 @@ const ProjectMain = () => {
             className="flex flex-wrap gap-8 "
           >
             {projects
-              .filter((project) => ![0, 1, 2, 5].includes(project.id))
+              .filter((project) => ![0, 1, 2, 5, 6, 7, 8, 9].includes(project.id))
               .map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
