@@ -149,9 +149,9 @@ const projects = [
   {
     id: 6,
     name: "BitCheck",
-    category: "AI | Computer Vision | Cybersecurity",
+    category: "AI | Multimodal | Cybersecurity",
     description:
-      "A multi-signal image verification API that analyzes uploads for manipulation and AI-generation. Combines metadata extraction, C2PA Content Credentials, visible watermark checking (via OCR and template matching), image forensics (sharpness, compression, noise anomalies), a PyTorch EfficientNet classifier trained on 140,000 images (70,000 real and 70,000 AI-generated), and Grad-CAM explainability into a dynamic risk-based JSON report.",
+      "A sophisticated multimodal verification API that analyzes uploaded media (text, image, video, audio) for manipulation and AI-generation. Combines metadata extraction, C2PA Content Credentials, visible watermark checking (via Tesseract OCR), image forensics, a PyTorch classifier trained on 140,000 images, audio analysis for voice clone artifacts, and text anomalies into a dynamic risk-based JSON report.",
     stack: [
       { name: "FastAPI" },
       { name: "PyTorch" },

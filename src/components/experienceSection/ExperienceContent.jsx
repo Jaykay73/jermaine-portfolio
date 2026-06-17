@@ -3,9 +3,17 @@ import { motion } from "framer-motion";
 
 const data = [
   {
+    period: "Jan 2026 - Present",
+    role: "Machine Learning Engineer",
+    company: "Queryfier LLC",
+    description:
+      "Build and deploy production-grade machine learning models for NLP and Computer Vision tasks. Construct end-to-end data preparation and training pipelines using Scikit-learn, TensorFlow, and PyTorch, deploying endpoints via FastAPI and Streamlit.",
+    locationType: "Remote",
+  },
+  {
     period: "Mar 2025 - Dec 2025",
     role: "ML Engineer & Tutor",
-    company: "Centre for Appied Machine Learning and Data Science",
+    company: "Centre for Applied Machine Learning and Data Science",
     description:
       "Built and deployed ML models for NLP and Computer Vision. Developed pipelines with Scikit-learn and TensorFlow. Deployed models with Streamlit and FastAPI. Mentored interns.",
     locationType: "On-site",

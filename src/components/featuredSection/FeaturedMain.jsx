@@ -16,12 +16,12 @@ const FeaturedMain = () => {
         {
             id: 0,
             title: "BitCheck",
-            category: "AI | Computer Vision | Cybersecurity",
-            subtitle: "Multi-Signal Image Verification & Forensic Analysis",
+            category: "AI | Multimodal | Cybersecurity",
+            subtitle: "Multimodal Integrity & Verification API (Text, Image, Video, Audio)",
             description:
-                "A sophisticated image verification API designed to identify manipulated and AI-generated media. By aggregating deep learning predictions with traditional forensic filters, C2PA validation, and OCR template matches, it generates comprehensive, risk-weighted reports.",
+                "A sophisticated multimodal verification API designed to identify manipulated and AI-generated media across text, images, videos, and audio. By aggregating deep learning predictions with traditional forensic filters, C2PA validation, and metadata extraction, it generates comprehensive, risk-weighted integrity reports.",
             techDeepDive:
-                "The core pipeline orchestrates multiple verification layers in parallel. It uses **FastAPI** to handle requests asynchronously. Metadata is extracted using **ExifTool / PyPDF**, while Content Credentials are parsed with the **c2patool**. Text/watermarks are identified using **pytesseract OCR** and **OpenCV template matching**. A custom **PyTorch EfficientNet-B0** model (trained on 140,000 images, half real and half AI) generates predictions, combined with CPU-optimized forensic checks (sharpness, noise, and compression anomalies). **Grad-CAM** generates visual heatmaps highlighting high-influence regions for model interpretability.",
+                "The core pipeline orchestrates multiple verification layers in parallel to analyze text, image, video, and audio signals. It uses **FastAPI** to handle requests asynchronously. Metadata is extracted using **ExifTool / PyPDF**, while Content Credentials are parsed with the **c2patool**. For images and video frames, a custom **PyTorch EfficientNet-B0** classifier (trained on 140,000 images) generates predictions, combined with visual forensics and **Grad-CAM** activation maps. Audio files are processed for voice cloning patterns, and text inputs are checked for LLM generation anomalies.",
             techStack: ["FastAPI", "PyTorch", "OpenCV", "Tesseract OCR", "Grad-CAM", "Docker"],
             image: bitcheckImg,
             links: {

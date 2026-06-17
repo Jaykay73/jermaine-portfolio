@@ -156,7 +156,8 @@ He built and deployed ML models for NLP and Computer Vision, developed pipelines
     title: "Machine Learning Engineer",
     text: `
 John has been working at Queryfier LLC since Jan 2026 as a Machine Learning Engineer.
-He is building and deploying ML models for NLP and Computer Vision, developing pipelines with Scikit-learn and TensorFlow, and deploying models with Streamlit and FastAPI.
+He builds and deploys production-grade machine learning models for Natural Language Processing (NLP) and Computer Vision tasks.
+He constructs end-to-end data preparation and training pipelines using Scikit-learn, TensorFlow, and PyTorch, deploying endpoints via FastAPI and Streamlit.
 `,
     metadata: {
       company: "Queryfier LLC",
@@ -195,17 +196,17 @@ A beginner-friendly explanation by John detailing how neural networks update wei
   {
     id: "project-bitcheck",
     type: "project",
-    title: "BitCheck Image Verification API",
+    title: "BitCheck Multimodal Verification API",
     text: `
-John built BitCheck, a multi-signal image verification API that checks uploaded images for manipulation and AI-generation.
-It integrates EXIF/XMP/PNG metadata checks, C2PA Content Credentials via c2patool, visible watermark detection (using pytesseract OCR and OpenCV template matching), and lightweight forensics (noise, sharpness, compression anomalies).
-It features a custom PyTorch EfficientNet classifier trained on 140,000 images (70,000 real and 70,000 AI-generated) and exposes Grad-CAM explainability maps.
+John built BitCheck, a sophisticated multimodal verification API that checks uploaded media (text, image, video, audio) for manipulation and AI-generation.
+For images and video frames, it integrates EXIF/XMP/PNG metadata checks, C2PA Content Credentials via c2patool, visible watermark detection (using pytesseract OCR), and image forensics (sharpness, compression, noise anomalies), combined with a custom PyTorch classifier trained on 140,000 images (70,000 real and 70,000 AI-generated) and Grad-CAM explainability.
+For audio, it processes files for voice clone artifacts, and for text, it checks for LLM-generation markers.
 The service is built as a FastAPI backend, containerized with Docker, and deployed on a Hugging Face Space (https://huggingface.co/spaces/Jaykay73/Bitcheck-image).
 `,
     metadata: {
       liveUrl: "https://bitcheckapp.vercel.app/",
       githubUrl: "https://github.com/Jaykay73/bitcheck",
-      tags: ["image verification", "fastapi", "pytorch", "efficientnet", "c2pa", "opencv", "ocr", "grad-cam", "cybersecurity"],
+      tags: ["multimodal verification", "text", "video", "audio", "voice cloning", "fastapi", "pytorch", "c2pa", "opencv", "ocr", "grad-cam", "cybersecurity"],
     },
   },
   {
