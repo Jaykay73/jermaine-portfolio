@@ -7,6 +7,8 @@ import legalDocImg from "../../assets/projects/legal-doc/legal-doc.png";
 import nextwordImg from "../../assets/projects/pidgin-predictor/nextword.jpg";
 import bitcheckImg from "../../assets/projects/bitcheck/bitcheck.png";
 import diabeticRetinopathyImg from "../../assets/projects/diabetes/diabetic-retinopathy.png";
+import lockedInImg from "../../assets/projects/lockedin/lockedin.png";
+import flappyBirdRlImg from "../../assets/projects/flappy-bird/flappy-bird.jpg";
 import { FaGithub, FaExternalLinkAlt, FaMicrochip, FaBrain, FaDatabase, FaServer } from "react-icons/fa";
 
 const FeaturedMain = () => {
@@ -48,6 +50,44 @@ const FeaturedMain = () => {
             color: "text-pink-400",
             borderColor: "border-pink-400/30",
             shadow: "shadow-pink-400/20",
+        },
+        {
+            id: 2,
+            title: "LockedIn AI Service",
+            category: "AI | Backend Service",
+            subtitle: "Customized Resource Discovery & Roadmap Generator",
+            description:
+                "A backend service that generates custom, structured, and beginner-friendly learning roadmaps for any topic or skill. It searches the web and YouTube for high-quality tutorials and generates verified roadmaps using generative models.",
+            techDeepDive:
+                "Built on **FastAPI** and uses **Pydantic v2** for robust schema validation. The engine queries the **Tavily Search API** and **YouTube Data API** to extract resource candidates. Custom filtering logic removes paid, duplicate, or dead links before passing clean data to **DeepSeek LLM** via a custom API prompt. Roadmaps are cached in a **SQLite database** using request hashes to minimize latency and API costs.",
+            techStack: ["FastAPI", "DeepSeek LLM", "Tavily API", "YouTube API", "SQLite", "Pydantic"],
+            image: lockedInImg,
+            links: {
+                live: "https://lockedin4l.vercel.app/",
+                github: "https://github.com/Jaykay73/LockedIn",
+            },
+            color: "text-indigo-400",
+            borderColor: "border-indigo-400/30",
+            shadow: "shadow-indigo-400/20",
+        },
+        {
+            id: 3,
+            title: "Flappy Bird RL",
+            category: "AI | Reinforcement Learning",
+            subtitle: "Multi-Algorithm Policy Search & Control",
+            description:
+                "A comparative reinforcement learning project mapping the performance, learning stability, and sample efficiency of different agent architectures training to play Flappy Bird.",
+            techDeepDive:
+                "Explores the spectrum of control algorithms. Built a **tabular Q-learning** agent using custom state discretization and reward shaping. Transitions to deep RL using **Proximal Policy Optimization (PPO)** in **PyTorch** with continuous action/state representations. Also compared neuroevolution via **NEAT-Python** and custom **Genetic Algorithms** to evaluate optimization speed, fitness stability, and the role of observation space engineering.",
+            techStack: ["PyTorch", "Gym/Gymnasium", "NEAT-Python", "NumPy", "Q-Learning"],
+            image: flappyBirdRlImg,
+            links: {
+                live: "#",
+                github: "https://github.com/Jaykay73/flappy-bird",
+            },
+            color: "text-orange-400",
+            borderColor: "border-orange-400/30",
+            shadow: "shadow-orange-400/20",
         },
         {
             id: 4,
