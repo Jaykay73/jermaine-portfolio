@@ -271,7 +271,7 @@ const LockedInDemo = () => {
             >
               Hugging Face Spaces
             </a>
-            . Generating a new roadmap runs live search and takes about 10-15 seconds.
+            . Generating a new roadmap runs live search and takes about 10 seconds to 2 minutes.
           </p>
         </div>
       </div>
