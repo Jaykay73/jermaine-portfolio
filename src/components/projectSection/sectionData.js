@@ -22,6 +22,8 @@ import resumeOptimizerImg from "../../assets/projects/resume-optimizer/resume-da
 // New Projects
 import bitcheckImg from "../../assets/projects/bitcheck/bitcheck.png";
 import diabeticRetinopathyImg from "../../assets/projects/diabetes/diabetic-retinopathy.png";
+import lockedInImg from "../../assets/projects/lockedin/lockedin.png";
+import flappyBirdRlImg from "../../assets/projects/flappy-bird/flappy-bird.jpg";
 
 const projects = [
   {
@@ -182,6 +184,47 @@ const projects = [
     },
     image: diabeticRetinopathyImg,
     docImages: [diabeticRetinopathyImg],
+  },
+  {
+    id: 8,
+    name: "LockedIn AI Service",
+    category: "AI | Backend Service",
+    description:
+      "A standalone FastAPI service that generates beginner-friendly learning roadmaps for any skill or topic you want to learn (not just tech skills). It integrates Tavily and YouTube APIs to fetch real resource candidates, applies custom filters to remove invalid/duplicate links, uses DeepSeek LLM for roadmap generation, validates the structure using Pydantic v2, and caches results in SQLite.",
+    stack: [
+      { name: "FastAPI" },
+      { name: "Python" },
+      { name: "DeepSeek LLM" },
+      { name: "SQLite" },
+      { name: "Pydantic" },
+      { name: "Tavily API" },
+    ],
+    links: {
+      live: "https://lockedin4l.vercel.app/",
+      github: "https://github.com/Jaykay73/LockedIn",
+    },
+    image: lockedInImg,
+    docImages: [lockedInImg],
+  },
+  {
+    id: 9,
+    name: "Flappy Bird RL",
+    category: "AI | Reinforcement Learning",
+    description:
+      "A reinforcement learning project exploring policy search and control algorithms to train an agent to play Flappy Bird. Evaluated and compared Q-Learning (with custom discrete state mapping and reward shaping), Deep RL (Proximal Policy Optimization - PPO), neuroevolution (NEAT), and Genetic Algorithms (GA) to analyze sample efficiency, stability, and learning curves.",
+    stack: [
+      { name: "PyTorch" },
+      { name: "Gym/Gymnasium" },
+      { name: "NEAT-Python" },
+      { name: "NumPy" },
+      { name: "Python" },
+    ],
+    links: {
+      live: "#",
+      github: "https://github.com/Jaykay73/flappy-bird",
+    },
+    image: flappyBirdRlImg,
+    docImages: [flappyBirdRlImg],
   },
 ];
 
