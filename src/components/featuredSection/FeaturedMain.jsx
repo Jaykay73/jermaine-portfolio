@@ -171,9 +171,9 @@ const FeaturedMain = () => {
             category: "Medical AI Diagnostics",
             subtitle: "Computer Vision & Deep Learning",
             description:
-                "A life-saving diagnostic aid that classifies brain tumors (Glioma, Meningioma, Pituitary) from MRI scans with high precision, aiding medical professionals in early detection.",
+                "A life-saving diagnostic aid that classifies brain tumors (Glioma, Meningioma, Pituitary) from MRI scans with high precision. The model was optimized via quantization and successfully deployed on a seamless mobile application for edge inference.",
             techDeepDive:
-                "Leverages **Transfer Learning** with the **EfficientNetB0** architecture, fine-tuned on thousands of MRI images. The model features custom **data augmentation layers** to handle scan variations. Deployed with a user-friendly interface that provides real-time inference and confidence scores.",
+                "Leverages **Transfer Learning** with the **EfficientNetB0** architecture, fine-tuned on thousands of MRI images. The model was **quantized** for local execution and deployed on a **seamless mobile application** for efficient edge inference. Also features custom data augmentation layers and is deployed with an interactive web interface providing real-time confidence scores.",
             techStack: ["TensorFlow", "EfficientNet", "Transfer Learning", "Computer Vision"],
             image: mriScanImg,
             links: {
