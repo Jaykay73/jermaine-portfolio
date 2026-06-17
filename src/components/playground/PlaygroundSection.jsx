@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaRocket, FaFileMedical, FaFilm, FaGavel, FaCreditCard, FaChartLine } from "react-icons/fa";
+import { FaRocket, FaFileMedical, FaFilm, FaGavel, FaShieldAlt, FaRoad } from "react-icons/fa";
 import NextWordDemo from "./NextWordDemo";
-import ComingSoonModelCard from "./ComingSoonModelCard";
 import BitCheckDemo from "./BitCheckDemo";
 import LockedInDemo from "./LockedInDemo";
+import ComingSoonModelCard from "./ComingSoonModelCard";
 
-const comingSoonModels = [
+const playgroundModels = [
   {
     title: "AI Resume Optimizer",
     category: "AI | Career Tech",
@@ -35,7 +35,7 @@ const comingSoonModels = [
     title: "Brain Tumor MRI Classifier",
     category: "Medical AI",
     description:
-      "Brain tumor classification from MRI scans using EfficientNetB0 transfer learning.",
+      "Brain tumor classification from MRI scans using EfficientNetB0 transfer learning. Quantized and deployed on a seamless mobile application.",
     color: "text-rose-400",
     icon: FaFileMedical,
   },
@@ -43,6 +43,7 @@ const comingSoonModels = [
 
 const PlaygroundSection = () => {
   const [activeModel, setActiveModel] = useState("pidgin");
+
   return (
     <div className="pt-20 pb-16 container mx-auto px-6 relative z-10" id="playground">
       {/* Section Header */}
@@ -60,7 +61,7 @@ const PlaygroundSection = () => {
           AI <span className="text-accent">Playground</span>
         </h2>
         <p className="text-gray-400 text-lg max-w-2xl mt-4">
-          Don't just read about my models — test them live. Type a phrase and watch the predictions flow in real time.
+          Don't just read about my models — test them live from the comfort of my website. Select a model below to experience it in real-time.
         </p>
       </motion.div>
 
@@ -177,14 +178,14 @@ const PlaygroundSection = () => {
         viewport={{ once: true }}
       >
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-2 h-2 rounded-full bg-gray-500" />
-          <span className="text-gray-500 text-xs font-bold tracking-wider uppercase">
-            More Models Coming Soon
+          <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <span className="text-accent text-xs font-bold tracking-wider uppercase">
+            Model Sandbox & Playground
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {comingSoonModels.map((model) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {playgroundModels.map((model) => (
             <ComingSoonModelCard key={model.title} {...model} />
           ))}
         </div>
