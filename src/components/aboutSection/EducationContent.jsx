@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 
 const data = [
   {
-    period: "2020 - 2025",
-    role: "B.Eng. Mechatronics",
-    company: "Bowen University, Iwo",
+    period: "2021 - 2026",
+    role: "B.Eng. Computer Engineering",
+    company: "University of Ilorin",
   },
 ];
 

@@ -25,3 +25,7 @@ dist-ssr
 
 # Envirionment
 .env
+
+# Downloaded scratch files
+flappy bird image.html
+flappy bird image_files/

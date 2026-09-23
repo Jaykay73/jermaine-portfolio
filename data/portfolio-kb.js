@@ -7,7 +7,7 @@ export const portfolioKB = [
 John Aledare, also known as Jermaine or Jaykay, is an AI Engineer and Machine Learning Engineer based in Nigeria.
 His entry into Machine Learning and AI was driven by a passion for problem-solving algorithms, where each milestone in his engineering journey was a response to solving one critical problem after another.
 He builds production-ready AI systems across NLP, computer vision, RAG, FastAPI, and data analytics.
-He is a Computer Engineering student at the University of Ilorin.
+He is studying for a B.Eng. in Computer Engineering at the University of Ilorin (2021-2026).
 Contact: aledareoluwaseunjohn@gmail.com
 Socials: GitHub (https://github.com/Jaykay73), LinkedIn (https://www.linkedin.com/in/johnaledare), Twitter (https://x.com/Jermaine_73)
 `,
