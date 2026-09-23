@@ -16,8 +16,8 @@ const NavMain = () => {
 
     const observerOptions = {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.6,
+      rootMargin: "-20% 0px -65% 0px",
+      threshold: 0,
     };
 
     const observerCallback = (entries) => {

@@ -443,11 +443,20 @@ const ChatWidget = () => {
                             ? "Welcome Recruiter! 👋 Jermaine is ready for hire."
                             : "Hi! I'm Jermaine's AI assistant."}
                         </h4>
-                        <p className="text-gray-400 text-xs leading-relaxed max-w-[260px] mx-auto px-2">
+                        <p className="text-gray-400 text-xs leading-relaxed max-w-[280px] mx-auto px-2">
                           {mode === "hire"
                             ? "Ask me about John's production readiness, core strengths, notice period, or scheduling a meeting."
-                            : "Ask me about John's deep learning projects, Python skills, ML pipelines, or technical background."}
+                            : "Ask me about John's deep learning projects, Python skills, or technical background."}
                         </p>
+                        {mode !== "hire" && (
+                          <button
+                            type="button"
+                            onClick={() => setMode("hire")}
+                            className="text-[11px] text-accent/90 hover:text-accent underline font-medium mt-1 cursor-pointer transition-colors"
+                          >
+                            Hiring? Switch to Recruiter Mode 💼
+                          </button>
+                        )}
                       </div>
 
                       {/* Recommend Projects Call-To-Action Card */}

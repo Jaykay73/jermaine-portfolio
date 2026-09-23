@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
+import { FaEnvelope, FaCopy, FaCheck } from "react-icons/fa";
 import SectionHeading from "../layout/SectionHeading";
 import ContactBackgroundScene from "./ContactBackgroundScene";
 
 const ContactMain = () => {
+  const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -84,8 +86,15 @@ const ContactMain = () => {
       );
   };
 
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("aledareoluwaseunjohn@gmail.com");
+    setCopied(true);
+    toast.success("Email address copied to clipboard!");
+    setTimeout(() => setCopied(false), 2500);
+  };
+
   return (
-    <div className="relative min-h-[100vh] w-[100vw] overflow-hidden">
+    <div className="relative min-h-[100vh] w-full overflow-hidden">
       <ContactBackgroundScene />
       <div className="relative z-10 container mx-auto flex flex-col items-center gap-4 py-12 xl:py-24 px-4">
         <div className="w-full xl:mx-[10%] xl:px-[10%]">
@@ -109,17 +118,30 @@ const ContactMain = () => {
             <div className="w-full max-w-2xl mt-12 bg-secondary backdrop-blur-lg rounded-3xl border border-primary/10 p-8 flex flex-col items-center gap-6 text-center shadow-[var(--shadow-neon)]">
               <h3 className="text-2xl font-bold text-accent">Get In Touch</h3>
               <p className="text-primary/80 max-w-md">
-                I'm currently open to new opportunities and collaborations.
-                Whether you have a question or just want to say hi, feel free to drop me an email!
+                I am currently open to new engineering opportunities and collaborations.
+                Whether you have a question or want to discuss a project, feel free to reach out directly.
               </p>
 
-              <a
-                href="mailto:aledareoluwaseunjohn@gmail.com"
-                className="px-8 py-4 bg-transparent border-2 border-accent text-accent font-bold rounded-full 
-                hover:bg-accent hover:text-secondary transition-all duration-300 transform hover:scale-105"
-              >
-                aledareoluwaseunjohn@gmail.com
-              </a>
+              <div className="flex flex-col sm:flex-row items-center gap-3 w-full justify-center max-w-lg mt-2">
+                <a
+                  href="mailto:aledareoluwaseunjohn@gmail.com"
+                  className="w-full sm:w-auto px-7 py-3.5 bg-accent text-background font-bold text-sm rounded-full 
+                  hover:bg-accent/90 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
+                >
+                  <FaEnvelope className="text-sm" />
+                  <span>Send Email</span>
+                </a>
+                <button
+                  onClick={handleCopyEmail}
+                  className="w-full sm:w-auto px-7 py-3.5 bg-white/5 border border-accent/40 text-accent font-bold text-sm rounded-full 
+                  hover:bg-accent/10 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                  title="Copy email to clipboard"
+                  aria-label="Copy email address"
+                >
+                  {copied ? <FaCheck className="text-green-400" /> : <FaCopy className="text-xs" />}
+                  <span>{copied ? "Copied to Clipboard!" : "Copy Email Address"}</span>
+                </button>
+              </div>
 
               <div className="flex gap-6 mt-4">
                 {/* Social links are already in the footer/nav, but adding small ones here looks nice */}

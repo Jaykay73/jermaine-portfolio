@@ -39,7 +39,7 @@ const ExperienceContent = () => {
       {/* </p> */}
 
       {/* Experience Cards */}
-      <div className="flex flex-col xl:flex-row flex-wrap gap-6 text-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-start w-full">
         {data.map((item, index) => (
           <motion.div
             key={index}
@@ -47,26 +47,24 @@ const ExperienceContent = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className="relative bg-secondary/40 backdrop-blur-md border border-white/10 p-6 rounded-3xl shadow-md hover:shadow-accent transition-shadow duration-300 xl:max-w-[32%]"
+            className="relative bg-secondary/40 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-3xl shadow-md hover:shadow-accent/40 transition-all duration-300 w-full flex flex-col justify-between"
           >
-            <p className="text-accent text-sm mb-2">{item.period}</p>
-            <h3 className="text-xl font-semibold text-primary mb-2">
-              {item.role}
-            </h3>
-            <p className="text-primary/80 text-sm mb-4">{item.description}</p>
-
-            <div className="flex justify-start mt-6">
-              <div className="flex items-center gap-2 text-primary font-medium">
-                <span className="text-accent text-xl">●</span>
-                {item.company}
-                <span className="text-sm xl:hidden bg-accent/70 text-transparent bg-clip-text">
-                  | {item.locationType}
-                </span>
-              </div>
+            <div>
+              <p className="text-accent text-sm font-semibold mb-2">{item.period}</p>
+              <h3 className="text-xl md:text-2xl font-bold text-primary mb-3">
+                {item.role}
+              </h3>
+              <p className="text-primary/80 text-sm md:text-base leading-relaxed mb-6">{item.description}</p>
             </div>
 
-            <div className="absolute bottom-3 hidden xl:block left-1/2 -translate-x-1/2 xl:left-auto xl:right-3 xl:translate-x-0 px-2 py-1 text-xs font-medium rounded-full border border-accent text-accent bg-secondary shadow-sm transition-all duration-300 group-hover:scale-105">
-              {item.locationType}
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
+              <div className="flex items-center gap-2 text-primary font-medium">
+                <span className="text-accent text-lg">●</span>
+                <span className="font-semibold text-sm md:text-base">{item.company}</span>
+              </div>
+              <span className="px-3 py-1 text-xs font-semibold rounded-full border border-accent/40 text-accent bg-accent/10">
+                {item.locationType}
+              </span>
             </div>
           </motion.div>
         ))}

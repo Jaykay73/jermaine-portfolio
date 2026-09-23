@@ -61,7 +61,10 @@ const PlaygroundSection = () => {
           AI <span className="text-accent">Playground</span>
         </h2>
         <p className="text-gray-400 text-lg max-w-2xl mt-4">
-          Don't just read about my models — test them live from the comfort of my website. Select a model below to experience it in real-time.
+          Don't just read about my models, test them live right from the website. Select a model below to experience it in real-time.
+        </p>
+        <p className="text-gray-500 text-xs mt-1">
+          Tip: If a model was idle, the first query may take a few seconds while the container initializes.
         </p>
       </motion.div>
 
@@ -119,7 +122,7 @@ const PlaygroundSection = () => {
                   Live Model
                 </span>
                 <span className="text-white text-sm font-semibold font-mono">
-                  — Nigerian Pidgin Next-Word Predictor
+                  : Nigerian Pidgin Next-Word Predictor
                 </span>
               </div>
               <NextWordDemo />
@@ -140,7 +143,7 @@ const PlaygroundSection = () => {
                   Live Model
                 </span>
                 <span className="text-white text-sm font-semibold font-mono">
-                  — BitCheck Image Authenticator (EfficientNet-B0 + Forensics)
+                  : BitCheck Image Authenticator (EfficientNet-B0 + Forensics)
                 </span>
               </div>
               <BitCheckDemo />
@@ -161,7 +164,7 @@ const PlaygroundSection = () => {
                   Live Service
                 </span>
                 <span className="text-white text-sm font-semibold font-mono">
-                  — LockedIn AI Roadmap Generator (DeepSeek + Tavily RAG)
+                  : LockedIn AI Roadmap Generator (DeepSeek + Tavily RAG)
                 </span>
               </div>
               <LockedInDemo />

@@ -125,7 +125,7 @@ const NextWordDemo = () => {
             <div className="w-3 h-3 rounded-full bg-green-500/70" />
           </div>
           <span className="text-gray-400 text-xs font-mono ml-2">
-            pidgin-predictor.py — LSTM + Trigram
+            pidgin-predictor.py | LSTM + Trigram
           </span>
         </div>
 
@@ -148,6 +148,21 @@ const NextWordDemo = () => {
               aria-label="Nigerian Pidgin text input"
               disabled={loading}
             />
+
+            {/* Quick Starter Pills */}
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <span className="text-gray-400 text-xs">Try:</span>
+              {["how far my", "wetin you dey", "make we go", "no wahala"].map((sample) => (
+                <button
+                  key={sample}
+                  type="button"
+                  onClick={() => setContext(sample)}
+                  className="px-2.5 py-1 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-accent hover:bg-accent/10 hover:border-accent/30 transition-all cursor-pointer"
+                >
+                  "{sample}"
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Controls Row */}
