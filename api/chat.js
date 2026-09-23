@@ -6,18 +6,78 @@
 import { Pinecone } from "@pinecone-database/pinecone";
 import OpenAI from "openai";
 import { generateChatReply } from "../lib/chatEngine.js";
+import { portfolioKB } from "../data/portfolio-kb.js";
 
 const MAX_MESSAGE_LENGTH = 1000;
+
+function getLocalContext(query) {
+  const stopwords = new Set(["what", "is", "the", "and", "for", "with", "about", "tell", "can", "you", "does", "have", "any", "how", "who", "are", "his", "her", "their", "this", "that", "projects", "project", "work", "built"]);
+  const cleaned = (query || "").toLowerCase().replace(/[^\w\s]/g, " ");
+  const allTokens = cleaned.split(/\s+/).filter((t) => t.length > 1);
+  const keywords = allTokens.filter((t) => !stopwords.has(t) && t.length > 2);
+  const tokensToUse = keywords.length > 0 ? keywords : allTokens;
+
+  const scored = portfolioKB.map((item) => {
+    let score = 0;
+    const titleLower = (item.title || "").toLowerCase();
+    const tagsLower = (item.metadata?.tags || []).join(" ").toLowerCase();
+    const textLower = (item.text || "").toLowerCase();
+
+    for (const t of tokensToUse) {
+      if (titleLower.includes(t)) score += 6;
+      if (tagsLower.includes(t)) score += 3;
+      if (textLower.includes(t)) score += 1;
+    }
+    return { item, score };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+  const matched = scored.filter((s) => s.score > 0).slice(0, 4);
+  const selected = matched.length > 0 ? matched.map((s) => s.item) : portfolioKB.slice(0, 4);
+
+  const sources = [];
+  const textChunks = selected.map((item) => {
+    let text = `[Source: ${item.title || "General"}] ${item.text.trim()}`;
+    const live = item.metadata?.liveUrl;
+    const github = item.metadata?.githubUrl;
+    const url = item.metadata?.url;
+
+    if (live && live !== "#") text += `\nLive Demo Link: ${live}`;
+    if (github && github !== "#") text += `\nGitHub Code Link: ${github}`;
+    if (url && url !== "#") text += `\nExternal URL Link: ${url}`;
+
+    const sourceUrl = (live && live !== "#") ? live : (github && github !== "#" ? github : url);
+    if (sourceUrl && sourceUrl !== "#" && !sources.some((s) => s.url === sourceUrl)) {
+      sources.push({
+        title: item.title || "Reference",
+        type: item.type || "reference",
+        url: sourceUrl,
+      });
+    }
+    return text;
+  });
+
+  return { context: textChunks.join("\n\n"), sources };
+}
 
 const SYSTEM_PROMPT = `You are John Aledare's portfolio assistant. John, also known as Jermaine, is an AI Engineer and Machine Learning Engineer who builds production-ready AI systems.
 
 Key facts about John:
 - Builds end-to-end ML/AI systems from research to deployment
 - Strong skills: Python, PyTorch, TensorFlow, FastAPI, NLP, Computer Vision, RAG pipelines, Vector Search
-- Notable projects: Nigerian Pidgin Next-Word Predictor (LSTM + Trigram), AI Resume Optimizer (Gemini 2.0), CineMatch recommendation engine (FAISS + embeddings), Legal Document Analyzer (RAG), Brain Tumor MRI Classifier (EfficientNet), BitCheck (multi-signal image verification API), Diabetic Retinopathy Classifier (Streamlit + Grad-CAM), LockedIn AI Service (FastAPI learning roadmaps), Flappy Bird RL (reinforcement learning control algorithms), Credit scoring models
+- Notable projects:
+  - BitCheck (multimodal media integrity verification API for text, images, video, and audio using PyTorch EfficientNet, Grad-CAM, C2PA, and FastAPI)
+  - Diabetic Retinopathy Classifier (medical computer vision with Grad-CAM explainability, deployed on Streamlit Cloud)
+  - LockedIn AI Service (FastAPI service generating custom beginner-friendly learning roadmaps using DeepSeek LLM, Tavily API, and SQLite)
+  - Flappy Bird RL (reinforcement learning with Q-learning, PPO, NEAT-Python, and Gymnasium)
+  - Nigerian Pidgin Next-Word Predictor (dual-model LSTM + Trigram with debounced real-time frontend)
+  - AI Resume Optimizer (Gemini 2.0 Flash with ONNX quantization for skill gap analysis)
+  - CineMatch API (vector similarity recommendations with FAISS and MiniLM)
+  - Legal Document Analyzer (RAG contract analysis)
+  - Brain Tumor MRI Classifier (EfficientNetB0 with quantization for edge mobile inference)
 - Deployment experience: Docker, Hugging Face Spaces, Vercel, Streamlit Cloud
-- Frameworks: Next.js, React, Streamlit for frontends; FastAPI for backends
-- Interests: NLP for low-resource African languages, production ML systems, AI-powered developer tools
+- Education: Studying B.Eng. in Computer Engineering at the University of Ilorin (2021-2026)
+- Work experience: Queryfier LLC (ML Engineer, Jan 2026 - Present), CAMLDS (ML Engineer Intern, Mar 2025 - Dec 2025)
 
 Answer questions about John's skills, projects, experience, and engineering approach. Be concise, friendly, technically accurate, and honest. If asked something you do not know, say you do not know. Do not invent personal details.`;
 
@@ -62,7 +122,6 @@ export default async function handler(req, res) {
   // Perform RAG if Pinecone is configured
   if (pineconeApiKey && pineconeIndexName) {
     try {
-      // 1. Initialize Clients
       const pinecone = new Pinecone({ apiKey: pineconeApiKey });
       const index = pinecone.index(pineconeIndexName);
       const openai = new OpenAI({
@@ -70,15 +129,13 @@ export default async function handler(req, res) {
         baseURL: "https://integrate.api.nvidia.com/v1",
       });
 
-      // 2. Generate Query Embedding
       const embedResponse = await openai.embeddings.create({
-        model: "nvidia/nv-embed-v1",
+        model: "nvidia/llama-nemotron-embed-vl-1b-v2",
         input: `Represent this query for retrieving relevant passages: ${trimmedMessage}`,
         encoding_format: "float",
       });
       const embedding = embedResponse.data[0].embedding;
 
-      // 3. Query Pinecone namespace "portfolio"
       const queryResponse = await index.namespace("portfolio").query({
         vector: embedding,
         topK: 4,
@@ -92,19 +149,10 @@ export default async function handler(req, res) {
         const formattedMatches = matches.map(match => {
           const meta = match.metadata;
           let text = `[Source: ${meta.title || "General"}] ${meta.text.trim()}`;
-          
-          // Formulate and inject explicit links into the RAG text context
-          if (meta.liveUrl && meta.liveUrl !== "#") {
-            text += `\nLive Demo Link: ${meta.liveUrl}`;
-          }
-          if (meta.githubUrl) {
-            text += `\nGitHub Code Link: ${meta.githubUrl}`;
-          }
-          if (meta.url && meta.url !== "#") {
-            text += `\nExternal URL Link: ${meta.url}`;
-          }
+          if (meta.liveUrl && meta.liveUrl !== "#") text += `\nLive Demo Link: ${meta.liveUrl}`;
+          if (meta.githubUrl) text += `\nGitHub Code Link: ${meta.githubUrl}`;
+          if (meta.url && meta.url !== "#") text += `\nExternal URL Link: ${meta.url}`;
 
-          // Compile sources for citation UI rendering
           const sourceUrl = (meta.liveUrl && meta.liveUrl !== "#") ? meta.liveUrl : (meta.githubUrl || meta.url);
           if (sourceUrl && sourceUrl !== "#") {
             if (!sources.some(s => s.url === sourceUrl)) {
@@ -115,21 +163,23 @@ export default async function handler(req, res) {
               });
             }
           }
-          
           return text;
         });
 
         if (formattedMatches.length > 0) {
           retrievedContext = formattedMatches.join("\n\n");
-          console.log(`[RAG] Successfully retrieved ${formattedMatches.length} context chunks from Pinecone.`);
         }
       }
     } catch (err) {
-      console.error("[RAG Error] Failed to retrieve context from Pinecone:", err.message);
-      // Fallback gracefully to non-RAG chat behavior
+      console.warn("[RAG Warn] Pinecone retrieval skipped/failed, falling back to local KB:", err.message);
     }
-  } else {
-    console.warn("[RAG Warn] Pinecone is not configured. Falling back to default system prompt.");
+  }
+
+  // Fallback to local portfolio KB if Pinecone context is empty
+  if (!retrievedContext) {
+    const local = getLocalContext(trimmedMessage);
+    retrievedContext = local.context;
+    sources = local.sources;
   }
 
   // Construct Dynamic RAG Prompt
