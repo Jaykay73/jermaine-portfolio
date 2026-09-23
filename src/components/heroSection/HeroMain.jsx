@@ -78,6 +78,35 @@ export default function HeroMain() {
           <DownloadCVButton />
         </motion.div>
       </motion.div>
+
+      {/* Scroll indicator — lets users know there's more content below */}
+      <motion.button
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400 hover:text-accent transition-colors cursor-pointer z-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8, duration: 0.6 }}
+        onClick={() => {
+          document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+        }}
+        aria-label="Scroll to explore more"
+      >
+        <span className="text-[10px] uppercase tracking-widest font-medium">Scroll</span>
+        <motion.svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <path d="M12 5v14" />
+          <path d="M19 12l-7 7-7-7" />
+        </motion.svg>
+      </motion.button>
     </div>
   );
 }
