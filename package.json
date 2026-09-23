@@ -11,6 +11,8 @@
     "update-kb": "tsx scripts/update-kb.ts"
   },
   "dependencies": {
+    "@langchain/core": "^1.2.0",
+    "@langchain/openai": "^1.5.1",
     "@pinecone-database/pinecone": "^7.2.0",
     "@react-three/drei": "^10.0.6",
     "@react-three/fiber": "^9.1.2",
@@ -21,6 +23,7 @@
     "dotenv": "^17.4.2",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^12.6.3",
+    "langchain": "^1.5.0",
     "lottie-react": "^2.4.1",
     "openai": "^6.34.0",
     "react": "^19.0.0",

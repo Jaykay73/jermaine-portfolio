@@ -1,14 +1,12 @@
 // Vercel Serverless Function — POST /api/chat
 // Proxies chat messages to NVIDIA's completions API using Pinecone RAG retrieval
+// and LangChain for conversation memory management.
 // NVIDIA_API_KEY, PINECONE_API_KEY, and PINECONE_INDEX_NAME must be set in Environment Variables
 
 import { Pinecone } from "@pinecone-database/pinecone";
 import OpenAI from "openai";
+import { generateChatReply } from "../lib/chatEngine.js";
 
-const NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1/chat/completions";
-const MODEL = "google/gemma-2-2b-it";
-const MAX_TOKENS = 400;
-const TEMPERATURE = 0.4;
 const MAX_MESSAGE_LENGTH = 1000;
 
 const SYSTEM_PROMPT = `You are John Aledare's portfolio assistant. John, also known as Jermaine, is an AI Engineer and Machine Learning Engineer who builds production-ready AI systems.
@@ -37,7 +35,7 @@ export default async function handler(req, res) {
   }
 
   // Validate request body
-  const { message, mode } = req.body || {};
+  const { message, mode, history } = req.body || {};
 
   if (!message || typeof message !== "string") {
     return res.status(400).json({ error: "A message is required." });
@@ -161,39 +159,12 @@ The user is a recruiter, hiring manager, or potential client.
   }
 
   try {
-    const response = await fetch(NVIDIA_BASE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        messages: [
-          {
-            role: "user",
-            content: `${finalSystemPrompt}\n\nUser question: ${trimmedMessage}`,
-          },
-        ],
-        max_tokens: MAX_TOKENS,
-        temperature: TEMPERATURE,
-        top_p: 0.7,
-        stream: false,
-      }),
+    const reply = await generateChatReply({
+      apiKey,
+      systemPrompt: finalSystemPrompt,
+      history: Array.isArray(history) ? history : [],
+      userMessage: trimmedMessage,
     });
-
-    if (!response.ok) {
-      const errorText = await response.text().catch(() => "");
-      console.error(`NVIDIA API error: ${response.status} — ${errorText}`);
-      return res.status(502).json({
-        error: "The AI service is temporarily unavailable. Please try again later.",
-      });
-    }
-
-    const data = await response.json();
-    const reply =
-      data?.choices?.[0]?.message?.content?.trim() ||
-      "I'm sorry, I couldn't generate a response right now.";
 
     return res.status(200).json({ reply, sources });
   } catch (err) {

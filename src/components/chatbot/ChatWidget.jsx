@@ -127,6 +127,13 @@ const ChatWidget = () => {
 
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const messagesRef = useRef(messages);
+
+  // Keep messagesRef in sync so handleSend can read the latest messages
+  // without depending on the messages state (which would recreate the callback)
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
 
   useEffect(() => {
     // Delay showing the greeting popover by 2.5 seconds on mount
@@ -166,12 +173,17 @@ const ChatWidget = () => {
       setInput("");
       setError(null);
 
+      // Capture the conversation history BEFORE adding the new user message.
+      // This history is sent to the backend so LangChain can inject it into
+      // the prompt as conversation memory.
+      const history = [...messagesRef.current];
+
       const userMsg = { role: "user", content: trimmed };
       setMessages((prev) => [...prev, userMsg]);
       setLoading(true);
 
       try {
-        const replyObj = await sendMessage(trimmed, mode);
+        const replyObj = await sendMessage(trimmed, mode, history);
         setMessages((prev) => [
           ...prev,
           { role: "assistant", content: replyObj.reply, sources: replyObj.sources },
@@ -301,6 +313,33 @@ const ChatWidget = () => {
                 >
                   💼 {mode === "hire" ? "Recruiter" : "Hire Me"}
                 </button>
+                {/* Clear conversation — only visible when there are messages */}
+                {messages.length > 0 && (
+                  <button
+                    onClick={() => {
+                      setMessages([]);
+                      setError(null);
+                    }}
+                    className="w-8 h-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+                    aria-label="Clear conversation"
+                    title="Clear conversation"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-3.5 h-3.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M3 6h18" />
+                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                    </svg>
+                  </button>
+                )}
                 <button
                   onClick={() => setIsOpen(false)}
                   className="w-8 h-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-gray-400 hover:text-white transition-colors"

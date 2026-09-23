@@ -1,18 +1,16 @@
 /**
  * Vite Dev Plugin — handles /api/chat requests during local development.
  * In production (Vercel), the /api/chat.js serverless function handles this.
- * This plugin reads NVIDIA_API_KEY, PINECONE_API_KEY, and PINECONE_INDEX_NAME from .env and proxies to Pinecone + NVIDIA's APIs.
+ * Uses LangChain for conversation memory and Pinecone + NVIDIA for RAG retrieval.
+ * This plugin reads NVIDIA_API_KEY, PINECONE_API_KEY, and PINECONE_INDEX_NAME from .env.
  */
 
 import { readFileSync } from "fs";
 import { resolve } from "path";
 import { Pinecone } from "@pinecone-database/pinecone";
 import OpenAI from "openai";
+import { generateChatReply } from "../lib/chatEngine.js";
 
-const NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1/chat/completions";
-const MODEL = "google/gemma-2-2b-it";
-const MAX_TOKENS = 400;
-const TEMPERATURE = 0.4;
 const MAX_MESSAGE_LENGTH = 1000;
 
 const SYSTEM_PROMPT = `You are John Aledare's portfolio assistant. John, also known as Jermaine, is an AI Engineer and Machine Learning Engineer who builds production-ready AI systems.
@@ -76,7 +74,7 @@ export function chatApiPlugin() {
           return;
         }
 
-        const { message, mode } = parsed;
+        const { message, mode, history } = parsed;
         if (!message || typeof message !== "string" || !message.trim()) {
           res.writeHead(400, { "Content-Type": "application/json" });
           res.end(JSON.stringify({ error: "A message is required." }));
@@ -200,38 +198,12 @@ The user is a recruiter, hiring manager, or potential client.
         }
 
         try {
-          const nvidiaRes = await fetch(NVIDIA_BASE_URL, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${apiKey}`,
-            },
-            body: JSON.stringify({
-              model: MODEL,
-              messages: [
-                {
-                  role: "user",
-                  content: `${finalSystemPrompt}\n\nUser question: ${trimmed}`,
-                },
-              ],
-              max_tokens: MAX_TOKENS,
-              temperature: TEMPERATURE,
-              top_p: 0.7,
-              stream: false,
-            }),
+          const reply = await generateChatReply({
+            apiKey,
+            systemPrompt: finalSystemPrompt,
+            history: Array.isArray(history) ? history : [],
+            userMessage: trimmed,
           });
-
-          if (!nvidiaRes.ok) {
-            const errText = await nvidiaRes.text().catch(() => "");
-            console.error(`[chat-api-dev] NVIDIA API error: ${nvidiaRes.status} — ${errText}`);
-            res.writeHead(502, { "Content-Type": "application/json" });
-            res.end(JSON.stringify({ error: "AI service temporarily unavailable." }));
-            return;
-          }
-
-          const data = await nvidiaRes.json();
-          const reply = data?.choices?.[0]?.message?.content?.trim() ||
-            "I couldn't generate a response right now.";
 
           res.writeHead(200, { "Content-Type": "application/json" });
           res.end(JSON.stringify({ reply, sources }));

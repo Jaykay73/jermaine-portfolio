@@ -1,23 +1,23 @@
 /**
  * Chat Service — Handles communication with the portfolio chatbot backend.
  *
- * Architecture note:
- * This service is structured so RAG retrieval can be added as a middleware
- * step. In the future, before calling sendMessage(), you could:
- * 1. Embed the user query
- * 2. Retrieve relevant chunks from portfolio-kb
- * 3. Append context to the message or send separately
+ * Conversation memory is handled by sending the full message history with each
+ * request. The backend (via LangChain) injects this history into the prompt so
+ * the model can maintain conversational continuity across multiple turns.
  */
 
 const CHAT_API_URL = "/api/chat";
 const REQUEST_TIMEOUT = 20000;
 
 /**
- * Send a message to the portfolio chatbot.
- * @param {string} message — The user's message
- * @returns {Promise<string>} — The assistant's reply
+ * Send a message to the portfolio chatbot with conversation history.
+ *
+ * @param {string} message — The user's current message
+ * @param {string} mode — "default" or "hire"
+ * @param {Array<{role: string, content: string}>} history — Previous messages in the conversation
+ * @returns {Promise<{reply: string, sources: Array}>} — The assistant's reply and RAG sources
  */
-export async function sendMessage(message, mode = "default") {
+export async function sendMessage(message, mode = "default", history = []) {
   const trimmed = (message || "").trim();
 
   if (!trimmed) {
@@ -35,7 +35,7 @@ export async function sendMessage(message, mode = "default") {
     const response = await fetch(CHAT_API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: trimmed, mode }),
+      body: JSON.stringify({ message: trimmed, mode, history }),
       signal: controller.signal,
     });
 
