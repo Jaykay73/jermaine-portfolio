@@ -26,11 +26,10 @@ const AboutMain = () => {
           >
             <p className="text-sm xl:text-lg text-primary/80 leading-relaxed">
               I am a Machine Learning Engineer and Data Scientist whose journey into AI was sparked by a deep fascination with problem-solving algorithms.
-              For me, every step in my learning path and career has been driven by a desire to tackle one concrete problem after another.
-              I don't just build models; I design and deploy production-ready AI systems that solve real-world challenges.
-              Specializing in Python, computer vision, NLP, and data analytics, I focus on building scalable, practical solutions that turn complex data into measurable value.
               <br /> <br />
-              When I'm not actively building projects, I write articles on my blog to demystify complex AI topics, explaining them as simply as possible to help others solve their own engineering hurdles.
+              These days, pretty much anyone can write code, and LLMs can generate it in seconds. But writing code is only a small part of the job. For me, what really matters is systematic problem solving. Before I write a single line, I like to step back: break the problem down into simple pieces, spot where things might break, and figure out what makes the most sense to build. I care less about flashy syntax and much more about building things that actually work in the real world.
+              <br /> <br />
+              Specializing in Python, computer vision, NLP, and backend AI services, I focus on building reliable, practical solutions that turn complex data into measurable value. When I'm not building, I write articles on my blog to explain complex AI topics as simply as possible and help other developers work through their own engineering hurdles.
             </p>
           </motion.div>
           <motion.div
