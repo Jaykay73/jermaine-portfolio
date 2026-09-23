@@ -24,6 +24,7 @@ import bitcheckImg from "../../assets/projects/bitcheck/bitcheck.png";
 import diabeticRetinopathyImg from "../../assets/projects/diabetes/diabetic-retinopathy.png";
 import lockedInImg from "../../assets/projects/lockedin/lockedin.png";
 import flappyBirdRlImg from "../../assets/projects/flappy-bird/flappy-bird.jpg";
+import nextwordImg from "../../assets/projects/pidgin-predictor/nextword.jpg";
 
 const projects = [
   {
@@ -225,6 +226,27 @@ const projects = [
     },
     image: flappyBirdRlImg,
     docImages: [flappyBirdRlImg],
+  },
+  {
+    id: 10,
+    name: "Nigerian Pidgin Next-Word Predictor",
+    category: "Deep Learning | NLP",
+    description:
+      "A dual-model natural language processing system predicting subsequent words in Nigerian Pidgin English. Combines a custom-trained LSTM neural network for deep semantic context with a statistical Trigram model for low-latency ranking, served via FastAPI and deployed on Streamlit Cloud.",
+    stack: [
+      { name: "PyTorch" },
+      { name: "LSTM" },
+      { name: "Trigram" },
+      { name: "FastAPI" },
+      { name: "Streamlit" },
+      { name: "Docker" },
+    ],
+    links: {
+      live: "https://nextword-pidgin.streamlit.app/",
+      github: "https://github.com/Jaykay73/nextword-pidgin",
+    },
+    image: nextwordImg,
+    docImages: [nextwordImg],
   },
 ];
 

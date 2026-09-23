@@ -5,9 +5,9 @@ import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
 
 const ProjectMain = () => {
-  // Exclude the 4 highlighted featured projects (BitCheck: 6, Diabetic: 7, LockedIn: 8, Flappy Bird: 9)
+  // Exclude the 5 highlighted featured projects (BitCheck: 6, Diabetic: 7, LockedIn: 8, Flappy Bird: 9, Pidgin: 10)
   const moreProjects = projects.filter(
-    (project) => ![6, 7, 8, 9].includes(project.id)
+    (project) => ![6, 7, 8, 9, 10].includes(project.id)
   );
 
   return (

@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import bitcheckImg from "../../assets/projects/bitcheck/bitcheck.png";
 import diabeticRetinopathyImg from "../../assets/projects/diabetes/diabetic-retinopathy.png";
+import nextWordImg from "../../assets/projects/pidgin-predictor/nextword.jpg";
 import lockedInImg from "../../assets/projects/lockedin/lockedin.png";
 import flappyBirdRlImg from "../../assets/projects/flappy-bird/flappy-bird.jpg";
 import { FaGithub, FaExternalLinkAlt, FaMicrochip } from "react-icons/fa";
@@ -48,6 +49,25 @@ const FeaturedMain = () => {
         },
         {
             id: 2,
+            title: "Nigerian Pidgin Next-Word Predictor",
+            category: "Deep Learning | NLP",
+            subtitle: "Dual-Model Architecture & Low-Resource Language Modeling",
+            description:
+                "A real-time natural language processing system engineered to predict subsequent words in Nigerian Pidgin English. Tackling the challenge of low-resource African languages, it pairs deep sequence modeling with statistical n-grams to deliver high prediction accuracy and sub-millisecond responsiveness.",
+            techDeepDive:
+                "Trained a custom **LSTM recurrent neural network** on a scraped and normalized corpus of Nigerian Pidgin texts to capture deep semantic dependencies and idiomatic syntax. To balance computational overhead, the engine pairs the LSTM with a lightweight **Trigram language model**, creating a dual-model pipeline that switches between deep context understanding and ultra-fast next-word ranking. The backend is served via **FastAPI** with client-side keystroke debouncing for real-time inference, and deployed on **Streamlit Cloud**.",
+            techStack: ["PyTorch", "LSTM", "Trigram Models", "FastAPI", "Streamlit", "Docker"],
+            image: nextWordImg,
+            links: {
+                live: "https://nextword-pidgin.streamlit.app/",
+                github: "https://github.com/Jaykay73/nextword-pidgin",
+            },
+            color: "text-emerald-400",
+            borderColor: "border-emerald-400/30",
+            shadow: "shadow-emerald-400/20",
+        },
+        {
+            id: 3,
             title: "LockedIn AI Service",
             category: "AI | Backend Service",
             subtitle: "Customized Resource Discovery & Roadmap Generator",
@@ -66,7 +86,7 @@ const FeaturedMain = () => {
             shadow: "shadow-indigo-400/20",
         },
         {
-            id: 3,
+            id: 4,
             title: "Flappy Bird RL",
             category: "AI | Reinforcement Learning",
             subtitle: "Multi-Algorithm Policy Search & Control",
