@@ -1,89 +1,88 @@
 import React from "react";
-// import ProjectDetailModal from "./ProjectDetailModal";
-// import { GoArrowUpRight } from "react-icons/go";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
-// import { BsFolderFill } from "react-icons/bs";
 
 const ProjectCard = ({ project }) => {
-  // const [isModalOpen, setIsModalOpen] = useState(false); // Modal disabled as per request
-  const isNotEven = project.id % 2 !== 0;
-  const textSlideFrom = isNotEven ? 100 : -100;
+  const hasLiveLink = project.links && project.links.live && project.links.live !== "#";
+  const hasGithub = project.links && project.links.github && project.links.github !== "#";
 
   return (
-    <>
-      <motion.div
-        className="rounded-4xl my-4 p-8 xl:max-w-[31.5%] shadow-xl bg-secondary/40 backdrop-blur-md border border-white/10 hover:shadow-lg hover:shadow-neonBlue transition-all duration-300"
-        whileHover={{ scale: 1.02 }}
-      >
-        <motion.div
-          className="flex flex-col gap-8"
-          initial={{ opacity: 0, x: textSlideFrom }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.div
-            className="w-full"
-            initial={{ opacity: 0, x: textSlideFrom }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <div className="relative group flex justify-center items-center bg-accent/10 rounded-lg shadow-md xl:h-[204px] h-auto overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.name}
-                className="object-cover object-center w-full h-full rounded-lg z-10"
-                loading="lazy"
-              />
-            </div>
-          </motion.div>
+    <motion.div
+      className="rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-xl bg-secondary/40 backdrop-blur-md border border-white/10 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 w-full group"
+      whileHover={{ y: -6 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.15 }}
+    >
+      <div className="flex flex-col gap-5">
+        <div className="relative flex justify-center items-center bg-accent/10 rounded-2xl shadow-md h-[190px] overflow-hidden border border-white/5">
+          <img
+            src={project.image}
+            alt={project.name}
+            className="object-cover object-center w-full h-full rounded-2xl group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
 
-          <h2 className="font-bold leading-none text-xl xl:text-2xl text-primary group-hover:text-accent transition-all duration-500 capitalize">
+        <div className="flex flex-col gap-1.5">
+          {project.category && (
+            <span className="text-accent text-xs font-bold uppercase tracking-wider">
+              {project.category}
+            </span>
+          )}
+          <h3 className="font-bold leading-snug text-xl text-primary group-hover:text-accent transition-colors duration-300">
             {project.name}
-          </h2>
+          </h3>
+        </div>
 
-          <p className="text-primary text-lg xl:text-xl leading-relaxed">
-            {project.description}
-          </p>
+        <p className="text-primary/80 text-sm leading-relaxed line-clamp-3">
+          {project.description}
+        </p>
 
-          <ul className="flex gap-1.5 flex-wrap">
-            {project.stack.map((item, index) => (
-              <li key={index} className="text-sm xl:text-md text-accent/70">
+        <ul className="flex gap-2 flex-wrap">
+          {project.stack &&
+            project.stack.map((item, index) => (
+              <li
+                key={index}
+                className="text-xs px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-gray-300"
+              >
                 {item.name}
-                {index !== project.stack.length - 1 && ","}
               </li>
             ))}
-          </ul>
+        </ul>
+      </div>
 
-          <div className="border border-primary/20" />
-
-          <div className="flex gap-4">
+      <div className="pt-5 mt-5 border-t border-white/10 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          {hasLiveLink ? (
             <a
               href={project.links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 bg-accent/10 text-primary shadow-md hover:scale-105 rounded-xl cursor-pointer transition-all duration-300"
+              className="flex items-center gap-2 px-4 py-2 bg-accent/15 text-accent text-sm font-semibold rounded-xl hover:bg-accent hover:text-background transition-all duration-300"
             >
-              Live Link
+              <span>Live Demo</span>
+              <FaExternalLinkAlt className="text-xs" />
             </a>
+          ) : (
+            <span className="text-xs text-gray-400 italic">Live demo upon request</span>
+          )}
+        </div>
 
-            <div className="flex justify-center items-center group w-[40px] h-[40px] bg-accent/10 rounded-full cursor-pointer hover:scale-115 transition-all duration-300">
-              <a
-                href={project.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaGithub className="text-2xl" />
-              </a>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* ProjectDetailModal removed per request to switch to direct Live Link */}
-    </>
+        {hasGithub && (
+          <a
+            href={project.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View on GitHub"
+            className="flex justify-center items-center w-10 h-10 bg-white/5 rounded-full hover:bg-white/15 hover:scale-110 transition-all duration-300 text-gray-300 hover:text-white"
+          >
+            <FaGithub className="text-xl" />
+          </a>
+        )}
+      </div>
+    </motion.div>
   );
 };
 

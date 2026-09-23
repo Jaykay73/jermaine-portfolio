@@ -44,11 +44,11 @@ function App() {
           <section id="playground">
             <PlaygroundMain />
           </section>
-          <section id="experience">
-            <ExperienceMain />
-          </section>
           <section id="more-projects">
             <ProjectMain />
+          </section>
+          <section id="experience">
+            <ExperienceMain />
           </section>
           <section id="blog">
             <BlogMain />

@@ -1,15 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import resumeOptimizerImg from "../../assets/projects/resume-optimizer/resume-dashboard.png";
-import cineMatchImg from "../../assets/projects/cinematch/cinematch.png";
-import mriScanImg from "../../assets/projects/brain-tumor/mri-scan.png";
-import legalDocImg from "../../assets/projects/legal-doc/legal-doc.png";
-import nextwordImg from "../../assets/projects/pidgin-predictor/nextword.jpg";
 import bitcheckImg from "../../assets/projects/bitcheck/bitcheck.png";
 import diabeticRetinopathyImg from "../../assets/projects/diabetes/diabetic-retinopathy.png";
 import lockedInImg from "../../assets/projects/lockedin/lockedin.png";
 import flappyBirdRlImg from "../../assets/projects/flappy-bird/flappy-bird.jpg";
-import { FaGithub, FaExternalLinkAlt, FaMicrochip, FaBrain, FaDatabase, FaServer } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaMicrochip } from "react-icons/fa";
 
 const FeaturedMain = () => {
     const featuredProjects = [
@@ -88,101 +83,6 @@ const FeaturedMain = () => {
             color: "text-orange-400",
             borderColor: "border-orange-400/30",
             shadow: "shadow-orange-400/20",
-        },
-        {
-            id: 4,
-            title: "Nigerian Pidgin Next-Word Predictor",
-            category: "NLP & Dual-Model Architecture",
-            subtitle: "Real-time Text Prediction & Cultural Preservation",
-            description:
-                "A decoupled microservices system offering real-time next-word suggestions for Nigerian Pidgin. It combines a deep learning LSTM model for context awareness with a statistical Trigram model for speed and efficiency.",
-            techDeepDive:
-                "The backend uses **FastAPI** to serve both PyTorch LSTM and statistical models. **Docker** ensures consistent deployment on Hugging Face Spaces. The frontend, built with **Streamlit** and custom components, captures keystrokes in real-time, debouncing requests to balance latency and server load.",
-            techStack: ["PyTorch", "FastAPI", "Streamlit", "Docker", "Hugging Face"],
-            image: nextwordImg,
-            links: {
-                live: "https://nextword-pidgin.streamlit.app/",
-                github: "https://github.com/Jaykay73/nextword-pidgin",
-            },
-            color: "text-amber-400",
-            borderColor: "border-amber-400/30",
-            shadow: "shadow-amber-400/20",
-        },
-        {
-            id: 5,
-            title: "AI Resume Optimizer",
-            category: "AI Career Coach",
-            subtitle: "Job Matching & tailored Cover letters",
-            description:
-                "An intelligent career assistant that bridges the gap between candidates and their dream roles. This system parses resumes with 95% accuracy and compares them against job descriptions to identify critical skill gaps.",
-            techDeepDive:
-                "The core is powered by **Gemini 2.0 Flash**, enabling high-context generation for tailored cover letters. Performance is optimized using **ONNX quantization** for local Named Entity Recognition (NER), drastically reducing inference time. The backend utilizes **FastAPI's asynchronous capabilities** to handle concurrent requests efficiently.",
-            techStack: ["Gemini 2.0", "ONNX", "FastAPI", "Next.js", "Docker"],
-            image: resumeOptimizerImg,
-            links: {
-                live: "https://aicareerarchitect.vercel.app",
-                github: "https://github.com/Jaykay73/resume-optimizer",
-            },
-            color: "text-cyan-400",
-            borderColor: "border-cyan-400/30",
-            shadow: "shadow-cyan-400/20",
-        },
-        {
-            id: 6,
-            title: "CineMatch API",
-            category: "Recommendation Engine",
-            subtitle: "Semantic Search & Vector Embeddings",
-            description:
-                "A next-generation movie recommendation engine that moves beyond simple genre matching. CineMatch understands the 'vibe' of a movie through deep semantic analysis.",
-            techDeepDive:
-                "Utilizes **MiniLM-L6-v2** to generate dense vector embeddings for movie plots. **FAISS (Facebook AI Similarity Search)** performs high-speed similarity searches across the vector space. The system implements a **self-updating pipeline** that fetches new releases from TMDB, ensuring recommendations stay current.",
-            techStack: ["FAISS", "SentenceTransformers", "FastAPI", "MiniLM", "Pandas"],
-            image: cineMatchImg,
-            links: {
-                live: "https://aether-match.vercel.app",
-                github: "https://github.com/Jaykay73/CineMatch",
-            },
-            color: "text-purple-400",
-            borderColor: "border-purple-400/30",
-            shadow: "shadow-purple-400/20",
-        },
-        {
-            id: 7,
-            title: "Legal Document Analyzer",
-            category: "NLP & RAG System",
-            subtitle: "Automated Contract Analysis",
-            description:
-                "A specialized tool designed to demystify complex legal language. It allows users to upload contracts and instantly extract critical clauses, obligations, and potential risks.",
-            techDeepDive:
-                "Built on a **RAG (Retrieval-Augmented Generation)** architecture. Text is extracted from PDFs and chunked for embedding. **Cosine Similarity rankings** retrieve the most relevant context for every user query, allowing the LLM to provide precise, fact-based answers rooted strictly in the document text.",
-            techStack: ["RAG Pipeline", "NLP", "PyPDF", "Vector Search", "Streamlit"],
-            image: legalDocImg,
-            links: {
-                live: "#",
-                github: "https://github.com/Jaykay73/Legal-Document-Analyser",
-            },
-            color: "text-emerald-400",
-            borderColor: "border-emerald-400/30",
-            shadow: "shadow-emerald-400/20",
-        },
-        {
-            id: 8,
-            title: "Brain Tumor MRI Classifier",
-            category: "Medical AI Diagnostics",
-            subtitle: "Computer Vision & Deep Learning",
-            description:
-                "A life-saving diagnostic aid that classifies brain tumors (Glioma, Meningioma, Pituitary) from MRI scans with high precision. The model was optimized via quantization and successfully deployed on a seamless mobile application for edge inference.",
-            techDeepDive:
-                "Leverages **Transfer Learning** with the **EfficientNetB0** architecture, fine-tuned on thousands of MRI images. The model was **quantized** for local execution and deployed on a **seamless mobile application** for efficient edge inference. Also features custom data augmentation layers and is deployed with an interactive web interface providing real-time confidence scores.",
-            techStack: ["TensorFlow", "EfficientNet", "Transfer Learning", "Computer Vision"],
-            image: mriScanImg,
-            links: {
-                live: "https://mri-scan.streamlit.app/",
-                github: "https://github.com/Jaykay73/MRI-Scan",
-            },
-            color: "text-rose-400",
-            borderColor: "border-rose-400/30",
-            shadow: "shadow-rose-400/20",
         },
     ];
 
@@ -300,6 +200,29 @@ const FeaturedMain = () => {
                     </motion.div>
                 ))}
             </div>
+
+            {/* Quick Navigation to Playground & More Projects */}
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-20 text-center"
+            >
+                <a
+                    href="#playground"
+                    className="px-6 py-3 rounded-xl bg-accent text-background font-bold text-sm shadow-lg shadow-accent/20 hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                >
+                    <span>Test Live Models in AI Playground</span>
+                    <span>↓</span>
+                </a>
+                <a
+                    href="#more-projects"
+                    className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 text-sm font-semibold transition-all duration-300"
+                >
+                    Explore More Projects ↓
+                </a>
+            </motion.div>
         </div>
     );
 };
