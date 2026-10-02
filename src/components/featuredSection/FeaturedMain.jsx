@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import bitcheckImg from "../../assets/projects/bitcheck/bitcheck.png";
+import supplyPilotImg from "../../assets/projects/supply-pilot/supply-pilot.png";
 import diabeticRetinopathyImg from "../../assets/projects/diabetes/diabetic-retinopathy.png";
 import nextWordImg from "../../assets/projects/pidgin-predictor/nextword.jpg";
 import lockedInImg from "../../assets/projects/lockedin/lockedin.png";
@@ -11,6 +12,25 @@ const FeaturedMain = () => {
     const featuredProjects = [
         {
             id: 0,
+            title: "SupplyPilot",
+            category: "Autonomous AI | Supply Chain",
+            subtitle: "Autonomous Operations & Decision Support for Pharmaceutical Manufacturing",
+            description:
+                "An autonomous enterprise operations platform engineered to detect upstream supply disruptions, calculate downstream cleanroom inventory deficits, and orchestrate compliant purchase requisitions through deterministic business rules and human-in-the-loop sign-off.",
+            techDeepDive:
+                "Powered by a stateful **LangGraph** reasoning engine that navigates complex disruption cascades (such as active pharmaceutical ingredient delays). The architecture isolates probabilistic AI reasoning from deterministic execution: LangGraph proposes interventions, an SOP **RAG pipeline** retrieves governing regulatory clauses, and the **Jev AI Gateway** computes multi-factor risk scores, while a rigid **deterministic Python rules engine** strictly enforces procurement limits and financial invariant thresholds before creating stageable purchase orders.",
+            techStack: ["LangGraph", "FastAPI", "Next.js 14", "Python", "SQLAlchemy", "PostgreSQL", "Docker", "RAG"],
+            image: supplyPilotImg,
+            links: {
+                live: "https://supply-pilot-three.vercel.app/",
+                github: "https://github.com/Jaykay73/SupplyPilot",
+            },
+            color: "text-blue-400",
+            borderColor: "border-blue-400/30",
+            shadow: "shadow-blue-400/20",
+        },
+        {
+            id: 1,
             title: "BitCheck",
             category: "AI | Multimodal | Cybersecurity",
             subtitle: "Multimodal Integrity & Verification API (Text, Image, Video, Audio)",
@@ -29,7 +49,7 @@ const FeaturedMain = () => {
             shadow: "shadow-teal-400/20",
         },
         {
-            id: 1,
+            id: 2,
             title: "Diabetic Retinopathy Classifier",
             category: "Deep Learning | Medical AI",
             subtitle: "Early Diagnostics & Model Explainability",
@@ -48,7 +68,7 @@ const FeaturedMain = () => {
             shadow: "shadow-pink-400/20",
         },
         {
-            id: 2,
+            id: 3,
             title: "Nigerian Pidgin Next-Word Predictor",
             category: "Deep Learning | NLP",
             subtitle: "Dual-Model Architecture & Low-Resource Language Modeling",
@@ -67,7 +87,7 @@ const FeaturedMain = () => {
             shadow: "shadow-emerald-400/20",
         },
         {
-            id: 3,
+            id: 4,
             title: "LockedIn AI Service",
             category: "AI | Backend Service",
             subtitle: "Customized Resource Discovery & Roadmap Generator",
@@ -86,7 +106,7 @@ const FeaturedMain = () => {
             shadow: "shadow-indigo-400/20",
         },
         {
-            id: 4,
+            id: 5,
             title: "Flappy Bird RL",
             category: "AI | Reinforcement Learning",
             subtitle: "Multi-Algorithm Policy Search & Control",

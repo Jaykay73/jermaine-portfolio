@@ -5,10 +5,10 @@ import { sendMessage } from "../../services/chatService";
 
 const STARTER_QUESTIONS = [
   "What projects has John built?",
+  "What are John's most recent projects?",
   "What is John's strongest AI skill?",
   "Which project best shows production AI?",
   "Does John work with FastAPI?",
-  "What kind of roles is John suited for?",
 ];
 
 const RECRUITER_STARTER_QUESTIONS = [
@@ -393,7 +393,7 @@ const ChatWidget = () => {
                           {
                             label: "Computer Vision",
                             icon: "👁️",
-                            query: "Recommend Jermaine's projects on Computer Vision, EfficientNet, and CineMatch recommendations.",
+                            query: "Recommend Jermaine's projects on Computer Vision, BitCheck multimodal forensics, and Medical AI (Diabetic Retinopathy & Brain Tumor).",
                           },
                           {
                             label: "RAG & LLMs",

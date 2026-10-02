@@ -72,7 +72,21 @@
 
 ## 5. Detailed Project Showcase
 
-### 1. BitCheck — Multimodal Media Forensics & AI Verification API
+### 1. SupplyPilot — Autonomous Operations & Decision Support Platform
+- **Category:** Autonomous AI / Supply Chain / Pharmaceutical Manufacturing
+- **Live Demo:** [supply-pilot-three.vercel.app](https://supply-pilot-three.vercel.app/)
+- **GitHub Repository:** [github.com/Jaykay73/SupplyPilot](https://github.com/Jaykay73/SupplyPilot)
+- **Tech Stack:** LangGraph, FastAPI, Next.js 14, Python 3.11, SQLAlchemy 2.0, PostgreSQL, Docker, RAG, Jev AI Gateway.
+- **Architecture & Capabilities:**
+  - Autonomous AI operations platform connecting upstream chemical disruptions to downstream cleanroom manufacturing impact and automated purchase requisitions.
+  - **Hybrid Decision Architecture:** "LLMs propose and reason; deterministic systems verify and execute."
+  - **Reasoning Agent:** Directed state machine powered by LangGraph that plans multi-step interventions, queries domain tools, and checks regulatory SOPs.
+  - **SOP RAG System:** Granular section-level retrieval of compliance operating procedures (SOP-PRC-001, SOP-PRD-003, SOP-SUP-002).
+  - **Jev AI Risk Assessment:** Probabilistic risk scoring and evidence completeness rating hosted via Vercel AI Gateway.
+  - **Deterministic Rules Engine:** Pure Python invariant verification enforcing financial authority limits, GMP qualifications, and cleanroom freeze rules.
+  - **Human-in-the-Loop Governance:** Role-Based Access Control (RBAC) requiring authorized executive e-signatures for POs exceeding authority thresholds with an immutable audit ledger.
+
+### 2. BitCheck — Multimodal Media Forensics & AI Verification API
 - **Category:** Multimodal AI / Media Forensics / Cybersecurity
 - **Live Demo:** [bitcheckapp.vercel.app](https://bitcheckapp.vercel.app/)
 - **Hugging Face Space:** [huggingface.co/spaces/Jaykay73/Bitcheck-image](https://huggingface.co/spaces/Jaykay73/Bitcheck-image)
@@ -221,9 +235,10 @@ Published on Medium in *Artificial Intelligence in Plain English*:
 
 ### Q: What notable projects has John built?
 **A:**
-1. **BitCheck:** Multimodal media forensics API detecting AI generation across image, audio, video, and text using PyTorch, C2PA, OCR, and metadata analysis.
-2. **AI Resume Optimizer:** Career coach evaluating resumes against job descriptions with 95% parsing accuracy and generating custom cover letters via Gemini 2.0 Flash and ONNX.
-3. **LockedIn:** Standalone roadmap generator using DeepSeek LLM, Tavily, YouTube API, and Pydantic v2.
-4. **Nigerian Pidgin Predictor:** Dual-model (LSTM + Trigram) real-time next-word prediction engine for Nigerian Pidgin English.
-5. **CineMatch API:** Semantic movie recommendation service powered by SentenceTransformers embeddings and FAISS vector indexing.
-6. **Brain Tumor & Diabetic Retinopathy Classifiers:** Medical AI vision models utilizing EfficientNet with Grad-CAM explainability and edge quantization.
+1. **SupplyPilot:** Autonomous AI operations platform for pharmaceutical supply chains featuring LangGraph reasoning, SOP RAG, Jev AI risk evaluation, deterministic rules engine, and human-in-the-loop sign-off (Live: https://supply-pilot-three.vercel.app/ | GitHub: https://github.com/Jaykay73/SupplyPilot).
+2. **BitCheck:** Multimodal media forensics API detecting AI generation across image, audio, video, and text using PyTorch, C2PA, OCR, and metadata analysis.
+3. **AI Resume Optimizer:** Career coach evaluating resumes against job descriptions with 95% parsing accuracy and generating custom cover letters via Gemini 2.0 Flash and ONNX.
+4. **LockedIn:** Standalone roadmap generator using DeepSeek LLM, Tavily, YouTube API, and Pydantic v2.
+5. **Nigerian Pidgin Predictor:** Dual-model (LSTM + Trigram) real-time next-word prediction engine for Nigerian Pidgin English.
+6. **CineMatch API:** Semantic movie recommendation service powered by SentenceTransformers embeddings and FAISS vector indexing.
+7. **Brain Tumor & Diabetic Retinopathy Classifiers:** Medical AI vision models utilizing EfficientNet with Grad-CAM explainability and edge quantization.

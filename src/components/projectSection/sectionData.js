@@ -25,8 +25,31 @@ import diabeticRetinopathyImg from "../../assets/projects/diabetes/diabetic-reti
 import lockedInImg from "../../assets/projects/lockedin/lockedin.png";
 import flappyBirdRlImg from "../../assets/projects/flappy-bird/flappy-bird.jpg";
 import nextwordImg from "../../assets/projects/pidgin-predictor/nextword.jpg";
+import supplyPilotImg from "../../assets/projects/supply-pilot/supply-pilot.png";
 
 const projects = [
+  {
+    id: 11,
+    name: "SupplyPilot",
+    category: "Autonomous AI | Supply Chain",
+    description:
+      "Autonomous AI Operations and supply chain decision-support platform for pharmaceutical manufacturing. Combines LangGraph multi-agent reasoning, RAG regulatory SOP verification, Jev probabilistic risk scoring, and deterministic invariant rules for human-in-the-loop purchase approvals.",
+    stack: [
+      { name: "LangGraph" },
+      { name: "FastAPI" },
+      { name: "Next.js 14" },
+      { name: "Python" },
+      { name: "SQLAlchemy" },
+      { name: "PostgreSQL" },
+      { name: "Docker" },
+    ],
+    links: {
+      live: "https://supply-pilot-three.vercel.app/",
+      github: "https://github.com/Jaykay73/SupplyPilot",
+    },
+    image: supplyPilotImg,
+    docImages: [supplyPilotImg],
+  },
   {
     id: 5,
     name: "AI Resume Optimizer",
